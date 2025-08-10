@@ -1,0 +1,162 @@
+@import "tailwindcss";
+
+:root {
+  --background: #ffffff;
+  --foreground: #0a0a0a;
+  --frost-bg: 255 255 255; /* rgb */
+  --brand: #0b2240; /* navy */
+  --brand-start: #061328; /* darker navy */
+  --brand-end: #0b2240;   /* brand navy */
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+  --font-brand-ui: var(--font-brand-ui);
+}
+
+/* Force light theme for marketing site for consistent brand */
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+}
+
+/* Header and Footer typography overrides */
+.brand-ui {
+  font-family: var(--font-brand-ui), system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  letter-spacing: 0.2px;
+}
+
+/* Subtle frosted glass utility classes */
+.frost {
+  background-color: rgba(var(--frost-bg), 0.75);
+  -webkit-backdrop-filter: saturate(140%) blur(14px);
+  backdrop-filter: saturate(140%) blur(14px);
+}
+.frost-soft {
+  background-color: rgba(var(--frost-bg), 0.6);
+  -webkit-backdrop-filter: saturate(120%) blur(10px);
+  backdrop-filter: saturate(120%) blur(10px);
+}
+
+/* Smooth anchor scrolling */
+html:focus-within {
+  scroll-behavior: smooth;
+}
+
+/* Focus ring */
+:focus-visible {
+  outline: 2px solid rgba(0,0,0,0.2);
+  outline-offset: 2px;
+}
+
+/* Bouncing scroll indicator */
+@keyframes bounceY {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(6px); }
+}
+.animate-bounce-slow {
+  animation: bounceY 1.5s ease-in-out infinite;
+}
+@media (prefers-reduced-motion: reduce) {
+  .animate-bounce-slow { animation: none; }
+}
+
+/* Subtle hover lift utilities */
+@media (prefers-reduced-motion: no-preference) {
+  .hover-lift { transition: transform 180ms ease, box-shadow 180ms ease; }
+  .hover-lift:hover { transform: translateY(-2px); box-shadow: 0 10px 20px rgba(0,0,0,0.08); }
+  .hover-lift-sm { transition: transform 160ms ease, box-shadow 160ms ease; }
+  .hover-lift-sm:hover { transform: translateY(-1px); box-shadow: 0 8px 16px rgba(0,0,0,0.07); }
+  .tap-sm:active { transform: translateY(0); }
+}
+
+/* CTA pulse to keep the page feeling alive */
+@keyframes ctaPulse {
+  0%, 100% {
+    box-shadow: 0 0 0 0 rgba(11, 34, 64, 0.35), 0 0 0 0 rgba(11, 34, 64, 0.15) inset;
+    transform: translateZ(0) scale(1);
+  }
+  50% {
+    box-shadow: 0 0 0 8px rgba(11, 34, 64, 0.08), 0 0 0 2px rgba(11, 34, 64, 0.12) inset;
+    transform: translateZ(0) scale(1.01);
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .cta-pulse {
+    animation: ctaPulse 2.3s ease-in-out infinite;
+  }
+  .cta-pulse:hover { animation-play-state: paused; }
+}
+
+/* Liquid glass styles */
+.glass,
+.glass-soft {
+  position: relative;
+  overflow: hidden;
+  background-clip: padding-box, border-box;
+  border-radius: 1rem; /* matches rounded-2xl reasonably */
+}
+
+.glass {
+  background: linear-gradient(rgba(255,255,255,0.7), rgba(255,255,255,0.6)) padding-box,
+              linear-gradient(135deg, rgba(255,255,255,0.6), rgba(0,0,0,0.06)) border-box;
+  -webkit-backdrop-filter: blur(18px) saturate(160%);
+  backdrop-filter: blur(18px) saturate(160%);
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,0.35),
+    0 8px 24px rgba(0,0,0,0.08);
+}
+
+.glass-soft {
+  background: linear-gradient(rgba(255,255,255,0.6), rgba(255,255,255,0.5)) padding-box,
+              linear-gradient(135deg, rgba(255,255,255,0.5), rgba(0,0,0,0.05)) border-box;
+  -webkit-backdrop-filter: blur(14px) saturate(140%);
+  backdrop-filter: blur(14px) saturate(140%);
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,0.3),
+    0 6px 18px rgba(0,0,0,0.06);
+}
+
+.glass-border {
+  border: 1px solid transparent !important;
+}
+
+.glass::before,
+.glass-soft::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background-image: radial-gradient(rgba(255,255,255,0.06) 1px, transparent 1px);
+  background-size: 3px 3px;
+  opacity: 0.3;
+}
+
+@keyframes sheenMove {
+  0% { transform: translateX(-120%) rotate(20deg); }
+  100% { transform: translateX(120%) rotate(20deg); }
+}
+
+.glass-sheen::after {
+  content: "";
+  position: absolute;
+  top: -20%;
+  bottom: -20%;
+  left: -50%;
+  width: 40%;
+  background: linear-gradient(90deg, rgba(255,255,255,0) 0%, rgba(255,255,255,0.25) 50%, rgba(255,255,255,0) 100%);
+  filter: blur(6px);
+  opacity: 0.35;
+  transform: translateX(-120%) rotate(20deg);
+  pointer-events: none;
+  animation: sheenMove 6s linear infinite;
+}
+
+@media (hover: hover) {
+  .glass-sheen:hover::after { animation-duration: 3.5s; opacity: 0.5; }
+}
