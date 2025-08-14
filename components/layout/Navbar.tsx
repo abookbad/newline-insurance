@@ -1,0 +1,214 @@
+"use client";
+
+import React from "react";
+import Link from "next/link";
+import Image from "next/image";
+import { motion, useReducedMotion } from "framer-motion";
+import { navLinks } from "@/lib/content";
+import NavLink from "@/components/layout/NavLink";
+import DropdownMenu from "@/components/layout/DropdownMenu";
+import Button from "@/components/ui/Button";
+import { cn } from "@/components/ui/lib";
+
+type SafeMotionLiProps = {
+  children?: React.ReactNode;
+  className?: string;
+  initial?: unknown;
+  animate?: unknown;
+  transition?: unknown;
+  key?: string | number;
+};
+const MLi = motion.li as unknown as React.ComponentType<SafeMotionLiProps>;
+
+export default function Navbar() {
+  const prefersReduced = useReducedMotion();
+  const [open, setOpen] = React.useState(false);
+  const panelRef = React.useRef<HTMLDivElement | null>(null);
+  const firstFocusableRef = React.useRef<HTMLButtonElement | null>(null);
+  const lastFocusableRef = React.useRef<HTMLAnchorElement | null>(null);
+
+  React.useEffect(() => {
+    function onKey(e: KeyboardEvent) {
+      if (e.key === "Escape") setOpen(false);
+      if (!open) return;
+      if (e.key === "Tab" && panelRef.current) {
+        const focusables = panelRef.current.querySelectorAll<HTMLElement>(
+          'a[href], button:not([disabled]), [tabindex]:not([tabindex="-1"])'
+        );
+        const first = focusables[0];
+        const last = focusables[focusables.length - 1];
+        if (e.shiftKey && document.activeElement === first) {
+          e.preventDefault();
+          (last as HTMLElement)?.focus();
+        } else if (!e.shiftKey && document.activeElement === last) {
+          e.preventDefault();
+          (first as HTMLElement)?.focus();
+        }
+      }
+    }
+    document.addEventListener("keydown", onKey);
+    return () => document.removeEventListener("keydown", onKey);
+  }, [open]);
+
+  React.useEffect(() => {
+    if (open) document.body.style.overflow = "hidden";
+    else document.body.style.overflow = "";
+  }, [open]);
+
+  return (
+    <>
+      {/* Wrapper to avoid motion typing issues while preserving animation */}
+      {(() => {
+        type SafeMotionHeaderProps = {
+          children?: React.ReactNode;
+          className?: string;
+          initial?: unknown;
+          animate?: unknown;
+          transition?: unknown;
+        };
+        const MHeader = motion.header as unknown as React.ComponentType<SafeMotionHeaderProps>;
+        return (
+          <MHeader
+            initial={prefersReduced ? false : { opacity: 0, y: -10 }}
+            animate={prefersReduced ? { opacity: 1 } : { opacity: 1, y: 0 }}
+            transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
+            className="absolute inset-x-0 top-0 z-40 bg-transparent"
+          >
+            <div className="mx-auto max-w-7xl px-4 sm:px-6 py-2">
+              <div className="flex h-16 items-center justify-between gap-4 rounded-2xl glass-border bg-white/70 supports-[backdrop-filter]:bg-white/60 backdrop-blur-md shadow-sm px-3">
+                {/* Left: Logo */}
+                <Link href="/" className="flex items-center gap-2 rounded-2xl px-2 py-2 hover:bg-black/5 focus-visible:ring-2 ring-[--brand] ring-offset-2">
+                  <Image src="/mainPage/hero/heroLogoExtended.png" alt="Newline Financial & Insurance Solutions" width={240} height={36} className="h-8 w-auto sm:h-9" />
+                </Link>
+
+                {/* Center: Nav (desktop) */}
+                <nav className="hidden md:flex items-center gap-1">
+                  {navLinks.map((l) => (
+                    l.children ? (
+                      <DropdownMenu key={l.title} label={l.title} items={l.children} />
+                    ) : (
+                      <NavLink key={l.href} href={l.href!}>{l.title}</NavLink>
+                    )
+                  ))}
+                </nav>
+
+                {/* Right: CTAs */}
+                <div className="hidden md:flex items-center gap-2">
+                  <Button variant="secondary" href="tel:+19517049422" className="rounded-full">Call Us</Button>
+                  <Button variant="primary" href="/apply" className="rounded-full hover:shadow-[0_0_0_4px_rgba(11,34,64,0.08)] hover-lift">Get a Quote</Button>
+                </div>
+
+                {/* Mobile hamburger */}
+                <button
+                  type="button"
+                  aria-label="Open menu"
+                  onClick={() => setOpen(true)}
+                  className="md:hidden inline-flex items-center justify-center h-10 w-10 rounded-xl hover:bg-black/5 focus-visible:ring-2 ring-[--brand] ring-offset-2"
+                >
+                  <span className="sr-only">Open menu</span>
+                  <span aria-hidden className="block h-0.5 w-6 bg-[var(--brand)] rounded"></span>
+                </button>
+              </div>
+            </div>
+
+            {/* Mobile panel */}
+            {(() => {
+              type SafeMotionAsideProps = {
+                children?: React.ReactNode;
+                className?: string;
+                role?: string;
+                "aria-modal"?: string;
+                "aria-label"?: string;
+                initial?: unknown;
+                animate?: unknown;
+                transition?: unknown;
+                ref?: React.Ref<HTMLDivElement>;
+              };
+              const MAside = motion.aside as unknown as React.ComponentType<SafeMotionAsideProps>;
+              return (
+                <MAside
+                  ref={panelRef as unknown as React.Ref<HTMLDivElement>}
+                  role="dialog"
+                  aria-modal="true"
+                  aria-label="Mobile navigation"
+                  initial={false}
+                  animate={open ? (prefersReduced ? { opacity: 1 } : { x: 0 }) : (prefersReduced ? { opacity: 0 } : { x: "100%" })}
+                  transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
+                  className={cn(
+                    "fixed inset-y-0 right-0 w-[86%] max-w-sm glass-soft glass-border bg-white/80 supports-[backdrop-filter]:bg-white/60 backdrop-blur-md border-l border-black/10 shadow-xl md:hidden",
+                    open ? "pointer-events-auto" : "pointer-events-none translate-x-full"
+                  )}
+                >
+              <div className="flex h-14 items-center justify-between px-4 border-b border-black/10">
+                <span className="font-semibold text-[var(--brand)]">Menu</span>
+                <button
+                  ref={firstFocusableRef}
+                  type="button"
+                  aria-label="Close menu"
+                  onClick={() => setOpen(false)}
+                  className="inline-flex items-center justify-center h-10 w-10 rounded-xl hover:bg-black/5 focus-visible:ring-2 ring-[--brand] ring-offset-2"
+                >
+                  <span className="sr-only">Close</span>
+                  <span aria-hidden className="block h-0.5 w-6 bg-[var(--brand)] rotate-45 translate-y-0.5"></span>
+                </button>
+              </div>
+              <nav className="p-4">
+                <ul className="grid gap-1">
+                  {navLinks.map((l, i) => (
+                    <MLi
+                      key={l.title}
+                      initial={false}
+                      animate={open && !prefersReduced ? { opacity: 1, x: 0 } : { opacity: 1 }}
+                      transition={{ duration: 0.25, ease: [0.22, 1, 0.36, 1], delay: open && !prefersReduced ? i * 0.03 : 0 }}
+                      className="opacity-100"
+                    >
+                      {l.children ? (
+                        <details className="group">
+                          <summary className="flex cursor-pointer list-none items-center justify-between px-3 py-2 rounded-2xl hover:bg-black/5">
+                            <span className="text-sm font-medium text-[var(--brand)]/90">{l.title}</span>
+                            <span className="text-[var(--brand)]/60">▾</span>
+                          </summary>
+                          <ul className="mt-1 pl-3 grid gap-1">
+                            {l.children.map((c) => (
+                              <li key={c.href}>
+                                <a href={c.href} className="block px-3 py-2 rounded-xl text-sm text-[var(--brand)]/90 hover:bg-black/5 hover:scale-[1.01] transition-transform" onClick={() => setOpen(false)}>
+                                  {c.title}
+                                </a>
+                              </li>
+                            ))}
+                          </ul>
+                        </details>
+                      ) : (
+                        <a href={l.href!} className="block px-3 py-2 rounded-2xl text-sm text-[var(--brand)]/90 hover:bg-black/5" onClick={() => setOpen(false)}>
+                          {l.title}
+                        </a>
+                      )}
+                    </MLi>
+                  ))}
+                </ul>
+              </nav>
+              <div className="mt-auto p-4 border-t border-black/10">
+                <div className="grid gap-2">
+                  <Button variant="secondary" href="tel:+19517049422">Call Us</Button>
+                  <Button variant="primary" href="/apply">Get a Quote</Button>
+                </div>
+                <a
+                  ref={lastFocusableRef}
+                  href="#"
+                  onClick={(e) => { e.preventDefault(); setOpen(false); }}
+                  className="sr-only"
+                >
+                  end
+                </a>
+              </div>
+                </MAside>
+              );
+            })()}
+          </MHeader>
+        );
+      })()}
+    </>
+  );
+}
+
+

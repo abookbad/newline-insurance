@@ -9,7 +9,7 @@ export default function Footer() {
         <div>
           <div className="text-base font-semibold">Newline Financial</div>
           <div className="mt-2 text-sm text-white/80">
-            Life insurance with living benefits, Medicare assistance, and retirement planning.
+            Life insurance with living benefits, Medicare guidance, retirement and legacy planning.
           </div>
         </div>
         <div>
@@ -19,10 +19,19 @@ export default function Footer() {
             <a className="text-white/90 hover:text-white" href="/how-it-works">How It Works</a>
             <a className="text-white/90 hover:text-white" href="/faq">FAQ</a>
             <a className="text-white/90 hover:text-white" href="/contact">Contact</a>
+            <div className="mt-2 text-white/60">
+              <a className="hover:text-white" href="#" aria-label="Careers">Careers</a>
+              <span className="px-1">/</span>
+              <a className="hover:text-white" href="#" aria-label="Partners">Partners</a>
+            </div>
           </div>
         </div>
-        <div className="text-xs text-white/70 self-end sm:text-right">
-          © {year} Newline Financial and Insurance Solutions. All rights reserved.
+        <div className="text-xs text-white/70 self-end sm:text-right space-y-1">
+          <div>
+            <a href="tel:+19517049422" className="text-white/90 hover:text-white">(951) 704-9422</a>
+          </div>
+          <div>Mon–Fri: 8am–6pm PT · Service across the U.S.</div>
+          <div>© {year} Newline Financial and Insurance Solutions. All rights reserved.</div>
         </div>
       </Container>
     </footer>

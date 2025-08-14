@@ -5,7 +5,7 @@ export const site = {
   phone: "(951) 704-9422",
   url: "https://www.newline-financial.com",
   description:
-    "Trusted life insurance with living benefits, Medicare assistance, and retirement planning. Clear guidance from licensed experts.",
+    "Personalized coverage and financial guidance for ages 0–85—life insurance with living benefits, Medicare reviews, retirement & legacy planning.",
 };
 
 export const baseOpenGraph = {
@@ -18,7 +18,7 @@ export const baseOpenGraph = {
 
 export const buildMetadata = (): Metadata => ({
   title: {
-    default: site.name,
+    default: "Life Insurance with Living Benefits, Medicare & Retirement Planning | Newline Financial",
     template: "%s · Newline Financial",
   },
   description: site.description,
@@ -34,10 +34,12 @@ export const buildMetadata = (): Metadata => ({
       },
     ],
     locale: "en_US",
+    title: "Life Insurance with Living Benefits, Medicare & Retirement Planning | Newline Financial",
+    description: site.description,
   },
   twitter: {
     card: "summary_large_image",
-    title: site.name,
+    title: "Life Insurance with Living Benefits, Medicare & Retirement Planning | Newline Financial",
     description: site.description,
     images: ["/mainPage/hero/lifeInsuranceHeroBG.jpeg"],
   },

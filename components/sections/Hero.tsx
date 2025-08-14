@@ -20,7 +20,7 @@ export default function Hero() {
   const prefersReduced = useReducedMotion();
   const MDiv = motion.div as unknown as React.ComponentType<SafeMotionDivProps>;
   return (
-    <section className="relative overflow-hidden min-h-[80vh]">
+    <section className="relative overflow-hidden min-h-[80vh] pt-16">
       <div aria-hidden className="pointer-events-none absolute inset-0">
         <Image
           src="/mainPage/hero/lifeInsuranceHeroBG.jpeg"
@@ -47,27 +47,26 @@ export default function Hero() {
           transition={{ duration: 0.6, ease: "easeOut" }}
           className="max-w-none min-h-[70vh] flex items-center"
         >
-          {/* Header now shows the logo; remove in-hero logo */}
-
           <div className="w-full">
             <Card className="w-full max-w-7xl mx-auto p-6 md:p-8 glass glass-border min-h-[560px]">
               <div className="grid min-h-[560px] items-center gap-8 lg:grid-cols-2">
               <div>
                 <h1 className="text-4xl font-semibold tracking-tight sm:text-5xl">
-                  Protect what matters most, with guidance you can trust
+                  Protect Your Family. Grow Your Wealth. Plan Your Legacy.
                 </h1>
                 <p className="mt-4 text-lg text-black/70">
-                  Newline Financial and Insurance Solutions helps you find flexible life insurance with living benefits, Medicare assistance, and retirement options—clear, human, and built around you.
+                  Modern insurance and financial strategies tailored to you—life insurance with living benefits, Medicare guidance, retirement planning, and more.
                 </p>
+                <div className="mt-6 flex flex-wrap gap-2 text-xs text-black/70">
+                  <span className="rounded-full border border-black/10 bg-white/70 px-3 py-1">Ages 0–85</span>
+                  <span className="rounded-full border border-black/10 bg-white/70 px-3 py-1">Licensed & Trusted</span>
+                  <span className="rounded-full border border-black/10 bg-white/70 px-3 py-1">Personalized Plans</span>
+                </div>
                 <div className="mt-8 flex flex-wrap items-center gap-3">
-                  <Button href="/apply" className="cta-pulse">Get Your Free Quote</Button>
-                  <Button href="tel:+19517049422" variant="secondary">
-                    Speak to an Agent
-                  </Button>
+                  <Button href="/apply" className="cta-pulse">Get My Free Quote</Button>
+                  <Button href="tel:+19517049422" variant="secondary">Call (951) 704-9422</Button>
                 </div>
-                <div className="mt-4 text-sm text-black/60">
-                  Or call (951) 704-9422 — no pressure, just answers.
-                </div>
+                <div className="mt-4 text-sm text-black/60">No pressure. Just clear options.</div>
               </div>
               <div className="lg:pl-8 lg:border-l lg:border-black/10">
                  <div className="mb-4">
@@ -81,34 +80,7 @@ export default function Hero() {
           </div>
         </MDiv>
       </Container>
-      {/* Scroll cue */}
-      <div className="pointer-events-none absolute inset-x-0 bottom-4 flex justify-center">
-        <button
-          type="button"
-          onClick={() => {
-            const next = document.getElementById("estimator") || document.querySelector("main section, section");
-            if (next && "scrollIntoView" in next) {
-              (next as HTMLElement).scrollIntoView({ behavior: "smooth", block: "start" });
-            }
-          }}
-          onKeyDown={(e) => {
-            if (e.key === "Enter" || e.key === " ") {
-              e.preventDefault();
-              const next = document.getElementById("estimator") || document.querySelector("main section, section");
-              if (next && "scrollIntoView" in next) {
-                (next as HTMLElement).scrollIntoView({ behavior: "smooth", block: "start" });
-              }
-            }
-          }}
-          aria-label="Scroll to next section"
-          className="pointer-events-auto inline-flex items-center gap-2 rounded-md px-2 py-1 text-sm sm:text-base font-medium tracking-wide text-black/70 hover:text-black/80 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-black/20 cursor-pointer select-none animate-bounce-slow bg-transparent"
-        >
-          <span>Scroll</span>
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-            <path d="M6 9l6 6 6-6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-          </svg>
-        </button>
-      </div>
+      
     </section>
   );
 }

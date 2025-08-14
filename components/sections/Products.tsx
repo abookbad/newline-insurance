@@ -1,7 +1,7 @@
 import React from "react";
 import Section from "@/components/ui/Section";
 import Card from "@/components/ui/Card";
-import { ShieldCheck, Stethoscope, PiggyBank } from "lucide-react";
+import { ShieldCheck, Stethoscope, PiggyBank, Landmark, FileText, BriefcaseBusiness } from "lucide-react";
 import Link from "next/link";
 
 function ProductCard({ icon: Icon, title, bullets }: { icon: React.ElementType; title: string; bullets: string[] }) {
@@ -22,27 +22,48 @@ function ProductCard({ icon: Icon, title, bullets }: { icon: React.ElementType; 
 
 export default function Products() {
   return (
-    <Section id="products" title="Products" subtitle="Clear options that fit your life.">
-      <div className="grid gap-6 sm:grid-cols-3">
-        <Link href="/products" className="block hover-lift">
+    <Section id="services" title="Services" subtitle="Client-first guidance across life, retirement, and legacy.">
+      <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        <Link href="#life-insurance" className="block hover-lift">
           <ProductCard
             icon={ShieldCheck}
             title="Life Insurance w/ Living Benefits"
-            bullets={["Access benefits for chronic/critical illness", "Flexible coverage and riders", "Work with licensed experts"]}
+            bullets={["Term, Whole, IUL options", "Chronic/Critical/Terminal riders", "Flexible coverage & riders"]}
           />
         </Link>
-        <Link href="/products#medicare" className="block hover-lift">
-          <ProductCard
-            icon={Stethoscope}
-            title="Medicare Assistance"
-            bullets={["Enrollment timing & plan guidance", "Compare plan options clearly", "No-cost consultations"]}
-          />
-        </Link>
-        <Link href="/products#retirement" className="block hover-lift">
+        <Link href="#retirement" className="block hover-lift">
           <ProductCard
             icon={PiggyBank}
-            title="Retirement Planning"
-            bullets={["Protect savings from market swings", "Tax-advantaged strategies", "Simple, secure options"]}
+            title="Retirement & Wealth Planning"
+            bullets={["401(k)/IRA rollovers", "Annuities & income strategies", "Risk‑aware approaches"]}
+          />
+        </Link>
+        <Link href="#medicare" className="block hover-lift">
+          <ProductCard
+            icon={Stethoscope}
+            title="Medicare Guidance"
+            bullets={["Enrollment timing", "Plan selection support", "Annual reviews"]}
+          />
+        </Link>
+        <Link href="#estate" className="block hover-lift">
+          <ProductCard
+            icon={Landmark}
+            title="Estate & Legacy Planning"
+            bullets={["Trusts & wills (with pros)", "Wealth transfer strategies", "Beneficiary setup"]}
+          />
+        </Link>
+        <Link href="#tax" className="block hover-lift">
+          <ProductCard
+            icon={FileText}
+            title="Tax Optimization"
+            bullets={["Mitigation concepts", "Zero‑tax frameworks", "Coordinate with licensed pros"]}
+          />
+        </Link>
+        <Link href="#college-business" className="block hover-lift">
+          <ProductCard
+            icon={BriefcaseBusiness}
+            title="College & Business Planning"
+            bullets={["Beyond saving", "Continuity & key person", "Benefits strategies"]}
           />
         </Link>
       </div>

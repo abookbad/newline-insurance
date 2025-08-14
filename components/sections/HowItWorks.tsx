@@ -5,7 +5,7 @@ import Section from "@/components/ui/Section";
 import Card from "@/components/ui/Card";
 import Button from "@/components/ui/Button";
 import { motion, useReducedMotion } from "framer-motion";
-import { Sparkles, Settings2, CheckCircle2 } from "lucide-react";
+import { Sparkles, Settings2, CheckCircle2, LifeBuoy } from "lucide-react";
 
 type MotionDivProps = {
   children?: React.ReactNode;
@@ -17,27 +17,10 @@ type MotionDivProps = {
 };
 
 const steps = [
-  {
-    id: 0,
-    title: "Quote",
-    icon: Sparkles,
-    text: "Get an instant estimate — no email required.",
-    bullets: ["60‑second coverage estimator", "Transparent monthly range", "No forms, no spam"],
-  },
-  {
-    id: 1,
-    title: "Customize",
-    icon: Settings2,
-    text: "Tweak term, coverage, and living benefits with help from a licensed expert.",
-    bullets: ["Term length and riders", "Budget‑first recommendations", "Clear trade‑offs explained"],
-  },
-  {
-    id: 2,
-    title: "Activate",
-    icon: CheckCircle2,
-    text: "Apply securely with e‑sign. Many policies approve quickly.",
-    bullets: ["Secure digital application", "Fast decisions for many cases", "We stay with you after approval"],
-  },
+  { id: 0, title: "Free Consultation", icon: Sparkles, text: "Share your goals, budget, and timeframe.", bullets: ["Understand your priorities", "Review timelines", "Set next steps"] },
+  { id: 1, title: "Personalized Options", icon: Settings2, text: "Compare plans, living benefits, and costs.", bullets: ["Term vs. permanent", "Riders & benefits", "Clear trade‑offs"] },
+  { id: 2, title: "Activate Coverage", icon: CheckCircle2, text: "Quick application and underwriting.", bullets: ["Secure e‑sign", "Fast decisions for many", "We help you through"] },
+  { id: 3, title: "Ongoing Support", icon: LifeBuoy, text: "Adjust as life changes. We’re here when you need us.", bullets: ["Annual reviews", "Beneficiary updates", "Life events support"] },
 ];
 
 export default function HowItWorks() {
@@ -72,12 +55,17 @@ export default function HowItWorks() {
         })}
       </div>
 
-      {/* Progress bar */}
+      {/* Progress bar / timeline */}
       <div className="mt-4 h-1 w-full rounded-full bg-black/10">
         <div
           className="h-1 rounded-full bg-[var(--brand)] transition-all"
           style={{ width: `${((active + 1) / steps.length) * 100}%` }}
         />
+      </div>
+      <div className="mt-2 flex justify-between text-[10px] text-black/50">
+        {steps.map((s, i) => (
+          <span key={s.title} className={`${i <= active ? "text-[var(--brand)]/80" : ""}`}>Step {i + 1}</span>
+        ))}
       </div>
 
       {/* Active step content */}

@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono, Inter } from "next/font/google";
 import "./globals.css";
-import Header from "@/components/layout/Header";
+import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import MobileCallFAB from "@/components/layout/MobileCallFAB";
 import ScrollProgress from "@/components/layout/ScrollProgress";
@@ -35,7 +35,7 @@ export default function RootLayout({
     <html lang="en">
       <body className={`${geistSans.variable} ${geistMono.variable} ${brandUi.variable} antialiased min-h-screen flex flex-col`}>
         <ScrollProgress />
-        <Header />
+        <Navbar />
         <main className="flex-1 min-h-[60vh]">{children}</main>
         <Footer />
         <MobileCallFAB />

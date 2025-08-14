@@ -5,30 +5,14 @@ import Section from "@/components/ui/Section";
 import Card from "@/components/ui/Card";
 
 const faqs = [
-  {
-    q: "How long does underwriting take?",
-    a: "Many policies provide decisions quickly, sometimes instantly. Others may take a few days depending on health and records.",
-  },
-  {
-    q: "Can I adjust my coverage later?",
-    a: "Yes, policies often allow changes like updating beneficiaries, adding riders, or adjusting coverage with a quick review.",
-  },
-  {
-    q: "What are living benefits?",
-    a: "Riders that let you access a portion of your death benefit if you face chronic, critical, or terminal illness—subject to policy terms.",
-  },
-  {
-    q: "What if I smoke?",
-    a: "We’ll still help you find options. Premiums are typically higher for smokers, but there are competitive plans.",
-  },
-  {
-    q: "Do you charge for Medicare help?",
-    a: "No. Our guidance helps you understand enrollment windows and compare plans without fees.",
-  },
-  {
-    q: "Can I cancel?",
-    a: "Policies include a free-look period. After that, you can cancel at any time. We’ll help you understand the details.",
-  },
+  { q: "What are living benefits?", a: "On many policies, riders may let you access part of the benefit for chronic, critical, or terminal illness (subject to policy terms)." },
+  { q: "How long does underwriting take?", a: "Some decisions are quick; others take a few days depending on health history and records." },
+  { q: "Can I change coverage later?", a: "Often yes. You can review amounts, riders, and beneficiaries as life changes." },
+  { q: "Do you work in my state?", a: "We serve clients across the U.S. Availability of options varies by state and carrier." },
+  { q: "How do Medicare reviews work?", a: "We help you understand enrollment timing, compare plan types, and review annually." },
+  { q: "What if I already have a policy?", a: "We can review what you have, discuss gaps or goals, and suggest adjustments if needed." },
+  { q: "Do you charge for guidance?", a: "No. There’s no fee for consultations. We coordinate with licensed professionals when needed (tax/legal)." },
+  { q: "Is the estimator a quote?", a: "It’s educational. Final rates depend on underwriting and policy terms." },
 ];
 
 export default function FAQ() {
@@ -39,9 +23,9 @@ export default function FAQ() {
         {faqs.map((f, i) => {
           const isOpen = open === i;
           return (
-            <Card key={f.q} className="glass-soft glass-border">
+                <Card key={f.q} className="glass-soft glass-border hover-lift cursor-pointer">
               <button
-                className="w-full p-4 text-left"
+                className="w-full p-4 text-left rounded-md cursor-pointer hover:bg-white/70 focus-visible:ring-2 focus-visible:ring-[var(--brand)] focus-visible:ring-offset-2"
                 aria-expanded={isOpen}
                 onClick={() => setOpen(isOpen ? null : i)}
               >
