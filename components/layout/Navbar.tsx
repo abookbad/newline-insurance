@@ -127,16 +127,17 @@ export default function Navbar() {
               const MAside = motion.aside as unknown as React.ComponentType<SafeMotionAsideProps>;
               return (
                 <MAside
+                  key={open ? "open" : "closed"}
                   ref={panelRef as unknown as React.Ref<HTMLDivElement>}
                   role="dialog"
                   aria-modal="true"
                   aria-label="Mobile navigation"
-                  initial={false}
-                  animate={open ? (prefersReduced ? { opacity: 1 } : { x: 0 }) : (prefersReduced ? { opacity: 0 } : { x: "100%" })}
-                  transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
+                  initial={prefersReduced ? false : { opacity: 0, y: -8, scale: 0.98 }}
+                  animate={open ? (prefersReduced ? { opacity: 1 } : { opacity: 1, y: 0, scale: 1 }) : (prefersReduced ? { opacity: 0 } : { opacity: 0, y: -8, scale: 0.98 })}
+                  transition={{ duration: 0.25, ease: [0.22, 1, 0.36, 1] }}
                   className={cn(
-                    "fixed inset-y-0 right-0 w-[86%] max-w-sm glass-soft glass-border bg-white/80 supports-[backdrop-filter]:bg-white/60 backdrop-blur-md border-l border-black/10 shadow-xl md:hidden",
-                    open ? "pointer-events-auto" : "pointer-events-none translate-x-full"
+                    "fixed top-[64px] left-1/2 -translate-x-1/2 w-[92vw] max-w-md glass-soft glass-border bg-white/90 supports-[backdrop-filter]:bg-white/70 backdrop-blur-md border border-black/10 shadow-xl md:hidden rounded-2xl",
+                    open ? "pointer-events-auto" : "pointer-events-none opacity-0"
                   )}
                 >
               <div className="flex h-14 items-center justify-between px-4 border-b border-black/10">
@@ -157,8 +158,8 @@ export default function Navbar() {
                   {navLinks.map((l, i) => (
                     <MLi
                       key={l.title}
-                      initial={false}
-                      animate={open && !prefersReduced ? { opacity: 1, x: 0 } : { opacity: 1 }}
+                      initial={!prefersReduced && open ? { opacity: 0, x: 12 } : undefined}
+                      animate={open && !prefersReduced ? { opacity: 1, x: 0 } : { opacity: 1, x: 0 }}
                       transition={{ duration: 0.25, ease: [0.22, 1, 0.36, 1], delay: open && !prefersReduced ? i * 0.03 : 0 }}
                       className="opacity-100"
                     >

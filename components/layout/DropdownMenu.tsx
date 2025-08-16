@@ -128,14 +128,20 @@ export default function DropdownMenu({ label, items }: DropdownMenuProps) {
             ref={menuRef as unknown as React.Ref<HTMLDivElement>}
             role="menu"
             aria-label={label}
-            initial={prefersReduced ? false : { opacity: 0, y: 8 }}
-            animate={prefersReduced ? { opacity: 1 } : { opacity: 1, y: 0 }}
-            transition={{ duration: 0.22, ease: [0.22, 1, 0.36, 1] }}
-            className="fixed left-1/2 -translate-x-1/2 top-[72px] md:absolute md:left-0 md:translate-x-0 md:top-auto md:mt-2 w-[min(92vw,20rem)] rounded-2xl border glass-border bg-white/70 supports-[backdrop-filter]:bg-white/60 backdrop-blur-md shadow-lg p-2 z-30"
+            initial={prefersReduced ? false : { opacity: 0, y: -6, scale: 0.98 }}
+            animate={prefersReduced ? { opacity: 1 } : { opacity: 1, y: 0, scale: 1 }}
+            transition={{ duration: 0.24, ease: [0.22, 1, 0.36, 1] }}
+            className="fixed left-1/2 -translate-x-1/2 top-[60px] md:absolute md:left-0 md:translate-x-0 md:top-auto md:mt-2 w-[min(92vw,20rem)] rounded-2xl border glass-border bg-white/85 supports-[backdrop-filter]:bg-white/60 backdrop-blur-md shadow-lg p-2 z-30"
           >
           <ul className="grid gap-1" role="none">
-            {items.map((item) => (
-              <li key={item.href} role="none">
+            {items.map((item, idx) => (
+              <motion.li
+                key={item.href}
+                initial={prefersReduced ? false : { opacity: 0, x: 10 }}
+                animate={prefersReduced ? { opacity: 1 } : { opacity: 1, x: 0 }}
+                transition={{ duration: 0.22, delay: prefersReduced ? 0 : 0.04 * idx, ease: [0.22, 1, 0.36, 1] }}
+                role="none"
+              >
                 <a
                   role="menuitem"
                   href={item.href}
@@ -144,7 +150,7 @@ export default function DropdownMenu({ label, items }: DropdownMenuProps) {
                 >
                   {item.title}
                 </a>
-              </li>
+              </motion.li>
             ))}
           </ul>
           </MDiv>
