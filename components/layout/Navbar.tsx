@@ -103,7 +103,7 @@ export default function Navbar() {
             transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
             className="absolute inset-x-0 top-0 z-40 bg-transparent"
           >
-            <div className="mx-auto max-w-7xl px-4 sm:px-6 py-2">
+            <div className="mx-auto max-w-7xl px-4 sm:px-6 py-2 relative">
               <div ref={barRef} className="flex h-16 items-center justify-between gap-4 rounded-2xl glass-border bg-white/70 supports-[backdrop-filter]:bg-white/60 backdrop-blur-md shadow-sm px-3">
                 {/* Left: Logo */}
                 <Link href="/" className="flex items-center gap-2 rounded-2xl px-2 py-2 hover:bg-black/5 focus-visible:ring-2 ring-[--brand] ring-offset-2">
@@ -174,10 +174,9 @@ export default function Navbar() {
                   animate={open ? (prefersReduced ? { opacity: 1 } : { opacity: 1, y: 0, scale: 1 }) : (prefersReduced ? { opacity: 0 } : { opacity: 0, y: -8, scale: 0.98 })}
                   transition={{ duration: 0.25, ease: [0.22, 1, 0.36, 1] }}
                   className={cn(
-                    "fixed left-1/2 -translate-x-1/2 w-[92vw] max-w-md glass-soft glass-border bg-white/90 supports-[backdrop-filter]:bg-white/70 backdrop-blur-md border border-black/10 shadow-xl md:hidden rounded-2xl",
+                    "absolute left-1/2 -translate-x-1/2 top-[calc(100%+2px)] w-[92vw] max-w-md glass-soft glass-border bg-white/90 supports-[backdrop-filter]:bg-white/70 backdrop-blur-md border border-black/10 shadow-xl md:hidden rounded-2xl",
                     open ? "pointer-events-auto" : "pointer-events-none opacity-0"
                   )}
-                  style={{ top: panelTop }}
                 >
               <div className="flex h-14 items-center justify-between px-4 border-b border-black/10">
                 <span className="font-semibold text-[var(--brand)]">Menu</span>
