@@ -16,6 +16,8 @@ export default function DropdownMenu({ label, items }: DropdownMenuProps) {
   const wrapperRef = React.useRef<HTMLDivElement | null>(null);
   const prefersReduced = useReducedMotion();
   const closeTimer = React.useRef<number | null>(null);
+  const [menuTop, setMenuTop] = React.useState<number>(60);
+  const [isDesktop, setIsDesktop] = React.useState<boolean>(false);
 
   React.useEffect(() => {
     function onKeydown(e: KeyboardEvent) {
@@ -30,16 +32,41 @@ export default function DropdownMenu({ label, items }: DropdownMenuProps) {
     return () => document.removeEventListener("keydown", onKeydown);
   }, [open]);
 
-  // Close dropdown on scroll/resize to avoid lingering menus or misplacement
+  // Close dropdown on resize; update position on scroll
   React.useEffect(() => {
+    const updateTop = () => {
+      if (!open) return;
+      const btn = buttonRef.current;
+      if (!btn) return;
+      const rect = btn.getBoundingClientRect();
+      // For fixed-positioned dropdown, top should be viewport-relative (no scrollY)
+      setMenuTop(rect.bottom + 6);
+    };
     const close = () => setOpen(false);
-    window.addEventListener("scroll", close, { passive: true });
+    window.addEventListener("scroll", updateTop, { passive: true });
     window.addEventListener("resize", close);
     return () => {
-      window.removeEventListener("scroll", close);
+      window.removeEventListener("scroll", updateTop);
       window.removeEventListener("resize", close);
     };
   }, []);
+
+  // Track viewport breakpoint and compute dynamic top for mobile
+  React.useEffect(() => {
+    const mq = window.matchMedia("(min-width: 768px)");
+    const update = () => setIsDesktop(mq.matches);
+    update();
+    mq.addEventListener?.("change", update);
+    return () => mq.removeEventListener?.("change", update);
+  }, []);
+
+  React.useEffect(() => {
+    if (!open) return;
+    const btn = buttonRef.current;
+    if (!btn) return;
+    const rect = btn.getBoundingClientRect();
+    setMenuTop(Math.max(0, rect.bottom + 2));
+  }, [open]);
 
   React.useEffect(() => {
     function onClick(e: MouseEvent) {
@@ -121,6 +148,7 @@ export default function DropdownMenu({ label, items }: DropdownMenuProps) {
           animate?: unknown;
           transition?: unknown;
           ref?: React.Ref<HTMLDivElement>;
+          style?: React.CSSProperties;
         };
         const MDiv = motion.div as unknown as React.ComponentType<SafeMotionDivProps>;
         return (
@@ -131,27 +159,39 @@ export default function DropdownMenu({ label, items }: DropdownMenuProps) {
             initial={prefersReduced ? false : { opacity: 0, y: -6, scale: 0.98 }}
             animate={prefersReduced ? { opacity: 1 } : { opacity: 1, y: 0, scale: 1 }}
             transition={{ duration: 0.24, ease: [0.22, 1, 0.36, 1] }}
-            className="fixed left-1/2 -translate-x-1/2 top-[60px] md:absolute md:left-0 md:translate-x-0 md:top-auto md:mt-2 w-[min(92vw,20rem)] rounded-2xl border glass-border bg-white/85 supports-[backdrop-filter]:bg-white/60 backdrop-blur-md shadow-lg p-2 z-30"
+            style={!isDesktop ? { top: menuTop } : undefined}
+            className="fixed left-1/2 -translate-x-1/2 md:absolute md:left-0 md:translate-x-0 md:top-full md:mt-2 w-[min(92vw,20rem)] rounded-2xl border glass-border bg-white/85 supports-[backdrop-filter]:bg-white/60 backdrop-blur-md shadow-lg p-2 z-50"
           >
           <ul className="grid gap-1" role="none">
-            {items.map((item, idx) => (
-              <motion.li
-                key={item.href}
-                initial={prefersReduced ? false : { opacity: 0, x: 10 }}
-                animate={prefersReduced ? { opacity: 1 } : { opacity: 1, x: 0 }}
-                transition={{ duration: 0.22, delay: prefersReduced ? 0 : 0.04 * idx, ease: [0.22, 1, 0.36, 1] }}
-                role="none"
-              >
-                <a
-                  role="menuitem"
-                  href={item.href}
-                  className="block w-full text-left px-3 py-2 rounded-xl text-sm text-[var(--brand)]/90 hover:bg-black/5 hover:scale-[1.01] transition-transform focus-visible:ring-2 ring-[--brand] ring-offset-2"
-                  onClick={() => setOpen(false)}
+            {items.map((item, idx) => {
+              type SafeMotionLiProps = {
+                className?: string;
+                children?: React.ReactNode;
+                initial?: unknown;
+                animate?: unknown;
+                transition?: unknown;
+                role?: string;
+              };
+              const MLi = motion.li as unknown as React.ComponentType<SafeMotionLiProps>;
+              return (
+                <MLi
+                  key={item.href}
+                  initial={prefersReduced ? false : { opacity: 0, x: 10 }}
+                  animate={prefersReduced ? { opacity: 1 } : { opacity: 1, x: 0 }}
+                  transition={{ duration: 0.22, delay: prefersReduced ? 0 : 0.04 * idx, ease: [0.22, 1, 0.36, 1] }}
+                  role="none"
                 >
-                  {item.title}
-                </a>
-              </motion.li>
-            ))}
+                  <a
+                    role="menuitem"
+                    href={item.href}
+                    className="block w-full text-left px-3 py-2 rounded-xl text-sm text-[var(--brand)]/90 hover:bg-black/5 hover:scale-[1.01] transition-transform focus-visible:ring-2 ring-[--brand] ring-offset-2"
+                    onClick={() => setOpen(false)}
+                  >
+                    {item.title}
+                  </a>
+                </MLi>
+              );
+            })}
           </ul>
           </MDiv>
         );

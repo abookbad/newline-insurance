@@ -24,8 +24,10 @@ export default function Navbar() {
   const prefersReduced = useReducedMotion();
   const [open, setOpen] = React.useState(false);
   const panelRef = React.useRef<HTMLDivElement | null>(null);
+  const barRef = React.useRef<HTMLDivElement | null>(null);
   const firstFocusableRef = React.useRef<HTMLButtonElement | null>(null);
   const lastFocusableRef = React.useRef<HTMLAnchorElement | null>(null);
+  const [panelTop, setPanelTop] = React.useState<number>(56);
 
   React.useEffect(() => {
     function onKey(e: KeyboardEvent) {
@@ -55,6 +57,33 @@ export default function Navbar() {
     else document.body.style.overflow = "";
   }, [open]);
 
+  // Compute mobile panel top based on the rendered navbar height
+  React.useEffect(() => {
+    const updateTop = () => {
+      const bar = barRef.current;
+      if (!bar) return;
+      const rect = bar.getBoundingClientRect();
+      // Use viewport-relative top for a fixed panel; minimal gap
+      setPanelTop(Math.max(0, rect.bottom + 2));
+    };
+    updateTop();
+    window.addEventListener("resize", updateTop);
+    window.addEventListener("scroll", updateTop, { passive: true });
+    return () => {
+      window.removeEventListener("resize", updateTop);
+      window.removeEventListener("scroll", updateTop);
+    };
+  }, []);
+
+  // Recompute position whenever menu opens
+  React.useEffect(() => {
+    if (!open) return;
+    const bar = barRef.current;
+    if (!bar) return;
+    const rect = bar.getBoundingClientRect();
+    setPanelTop(Math.max(0, rect.bottom + 2));
+  }, [open]);
+
   return (
     <>
       {/* Wrapper to avoid motion typing issues while preserving animation */}
@@ -75,7 +104,7 @@ export default function Navbar() {
             className="absolute inset-x-0 top-0 z-40 bg-transparent"
           >
             <div className="mx-auto max-w-7xl px-4 sm:px-6 py-2">
-              <div className="flex h-16 items-center justify-between gap-4 rounded-2xl glass-border bg-white/70 supports-[backdrop-filter]:bg-white/60 backdrop-blur-md shadow-sm px-3">
+              <div ref={barRef} className="flex h-16 items-center justify-between gap-4 rounded-2xl glass-border bg-white/70 supports-[backdrop-filter]:bg-white/60 backdrop-blur-md shadow-sm px-3">
                 {/* Left: Logo */}
                 <Link href="/" className="flex items-center gap-2 rounded-2xl px-2 py-2 hover:bg-black/5 focus-visible:ring-2 ring-[--brand] ring-offset-2">
                   <Image src="/mainPage/hero/heroLogoExtended.png" alt="Newline Financial & Insurance Solutions" width={240} height={36} className="h-8 w-auto sm:h-9" />
@@ -102,11 +131,19 @@ export default function Navbar() {
                 <button
                   type="button"
                   aria-label="Open menu"
-                  onClick={() => setOpen(true)}
+                  onClick={() => setOpen((v) => !v)}
                   className="md:hidden inline-flex items-center justify-center h-10 w-10 rounded-xl hover:bg-black/5 focus-visible:ring-2 ring-[--brand] ring-offset-2"
                 >
-                  <span className="sr-only">Open menu</span>
-                  <span aria-hidden className="block h-0.5 w-6 bg-[var(--brand)] rounded"></span>
+                  <span className="sr-only">Toggle menu</span>
+                  {open ? (
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden>
+                      <path d="M6 6l12 12M18 6L6 18" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
+                    </svg>
+                  ) : (
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden>
+                      <path d="M4 7h16M4 12h16M4 17h16" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
+                    </svg>
+                  )}
                 </button>
               </div>
             </div>
@@ -123,6 +160,7 @@ export default function Navbar() {
                 animate?: unknown;
                 transition?: unknown;
                 ref?: React.Ref<HTMLDivElement>;
+                style?: React.CSSProperties;
               };
               const MAside = motion.aside as unknown as React.ComponentType<SafeMotionAsideProps>;
               return (
@@ -136,9 +174,10 @@ export default function Navbar() {
                   animate={open ? (prefersReduced ? { opacity: 1 } : { opacity: 1, y: 0, scale: 1 }) : (prefersReduced ? { opacity: 0 } : { opacity: 0, y: -8, scale: 0.98 })}
                   transition={{ duration: 0.25, ease: [0.22, 1, 0.36, 1] }}
                   className={cn(
-                    "fixed top-[64px] left-1/2 -translate-x-1/2 w-[92vw] max-w-md glass-soft glass-border bg-white/90 supports-[backdrop-filter]:bg-white/70 backdrop-blur-md border border-black/10 shadow-xl md:hidden rounded-2xl",
+                    "fixed left-1/2 -translate-x-1/2 w-[92vw] max-w-md glass-soft glass-border bg-white/90 supports-[backdrop-filter]:bg-white/70 backdrop-blur-md border border-black/10 shadow-xl md:hidden rounded-2xl",
                     open ? "pointer-events-auto" : "pointer-events-none opacity-0"
                   )}
+                  style={{ top: panelTop }}
                 >
               <div className="flex h-14 items-center justify-between px-4 border-b border-black/10">
                 <span className="font-semibold text-[var(--brand)]">Menu</span>
