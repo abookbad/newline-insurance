@@ -45,12 +45,12 @@ export default function ValueProps() {
             transition={{ duration: 0.6, ease: "easeOut" }}
             className="mx-auto max-w-3xl text-center px-4 sm:px-6 lg:px-8"
           >
-            <div className="text-[11px] uppercase tracking-[0.28em] text-white/85">Time to help and support</div>
+            <div className="text-[11px] uppercase tracking-[0.28em] text-white/85">Advice that fits real life</div>
             <h2 className="mt-3 text-white text-[28px] sm:text-[34px] md:text-[40px] leading-tight font-semibold">
-              Precision financial strategies: guiding your finances to new heights
+              Simple steps to protect what matters and grow with confidence
             </h2>
             <p className="mt-4 text-white/90">
-              Imagine a future where you’re financially secure, free from debt, and able to provide your family with everything they need and more. Picture yourself pursuing your passions, and watching your children thrive. This is not just a dream; it’s a reality that can be achieved with careful planning and dedication. By setting clear financial goals, creating a budget, and making informed decisions about saving and investing, you can build a brighter future for yourself and your loved ones.
+              Get clear, no‑jargon guidance tailored to your goals and budget. We help you put the right coverage in place today—and build a plan that adapts as life changes—so your family, your future, and your peace of mind are protected.
             </p>
             <MDiv
               initial={prefersReduced ? false : { opacity: 0, y: 12 }}

@@ -17,38 +17,38 @@ const ITEMS: Item[] = [
   {
     id: "debt",
     number: "01",
-    title: "Debt Elimination",
+    title: "Debt Reset Plan",
     blurb:
-      "Strategic payoff plans and coaching to eliminate high‑interest debt and free up cash flow for your goals.",
+      "A clear payoff strategy to tackle high‑interest balances and free up cash flow for savings and protection.",
     ctaHref: "/resources",
-    image: { src: "/services/tax-strategy.jpeg", alt: "Downward red arrow on chart" },
+    image: { src: "/services/tax-strategy.jpeg", alt: "Arrow dropping on a red chart" },
   },
   {
     id: "byob",
     number: "02",
-    title: "Be Your Own Bank",
+    title: "Smart Liquidity",
     blurb:
-      "Learn how policy designs can create liquidity and flexibility—without relying on traditional lenders.",
+      "Use policy designs and cash values strategically for access to funds and flexibility when life happens.",
     ctaHref: "/services/estate-legacy-planning",
-    image: { src: "/services/insurance-planning.jpeg", alt: "People transacting" },
+    image: { src: "/services/insurance-planning.jpeg", alt: "People reviewing finances together" },
   },
   {
     id: "taxfree",
     number: "03",
-    title: "Tax‑Free Retirement",
+    title: "Tax‑Savvy Retirement",
     blurb:
-      "Design retirement income with tax awareness, using insurance and accounts that target lower lifetime taxes.",
+      "Build retirement income with tax awareness—balancing accounts and insurance to keep more of what you earn.",
     ctaHref: "/services/retirement-planning",
-    image: { src: "/services/retirement-investment.jpeg", alt: "Older couple smiling" },
+    image: { src: "/services/retirement-investment.jpeg", alt: "Smiling couple reviewing retirement plan" },
   },
   {
     id: "guides",
     number: "04",
-    title: "Financial Guides",
+    title: "Quick Guides Library",
     blurb:
-      "Quick guides: Retirement, Life Insurance, Tax Planning, Debt Elimination, Credit Basics.",
+      "Straight‑to‑the‑point explainers on life insurance, retirement, taxes, debt strategies, and credit basics.",
     ctaHref: "/resources",
-    image: { src: "/services/business-owner.jpeg", alt: "Man budgeting at desk" },
+    image: { src: "/services/business-owner.jpeg", alt: "Person budgeting at a desk" },
   },
 ];
 

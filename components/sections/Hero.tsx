@@ -19,21 +19,23 @@ export default function Hero() {
   const prefersReduced = useReducedMotion();
   const MDiv = motion.div as unknown as React.ComponentType<SafeMotionDivProps>;
   return (
-    <section className="relative overflow-hidden h-[100svh] min-h-screen pt-16">
-      <div aria-hidden className="pointer-events-none absolute inset-0">
-        <video
-          className="absolute inset-0 h-full w-full object-cover"
-          src="/mainPage/hero/heroVideo-muted.mp4"
-          autoPlay
-          loop
-          muted
-          playsInline
-        />
-        <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/50 to-black/20" />
-        <div
-          aria-hidden
-          className="absolute inset-0 opacity-70 mix-blend-multiply bg-[radial-gradient(120%_90%_at_50%_85%,rgba(0,0,0,0.6),transparent)]"
-        />
+    <section className="relative overflow-hidden h-[100svh] min-h-screen pt-16 w-screen bg-black">
+      <div aria-hidden className="pointer-events-none absolute inset-0 overflow-hidden bg-black">
+        <div className="absolute top-0 left-1/2 -translate-x-1/2 h-full w-[115vw] -mx-[2vw]">
+          <video
+            className="absolute inset-0 h-full w-full object-cover max-w-none"
+            src="/mainPage/hero/heroVideo-muted.mp4"
+            autoPlay
+            loop
+            muted
+            playsInline
+          />
+          <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/50 to-black/20" />
+          <div
+            aria-hidden
+            className="absolute inset-0 opacity-70 mix-blend-multiply bg-[radial-gradient(120%_90%_at_50%_85%,rgba(0,0,0,0.6),transparent)]"
+          />
+        </div>
         {!prefersReduced && (
           <div className="absolute inset-0">
             <div className="absolute -top-20 left-1/4 h-72 w-72 rounded-full bg-black/5 blur-3xl" />
