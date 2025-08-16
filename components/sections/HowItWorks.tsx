@@ -31,7 +31,10 @@ export default function HowItWorks() {
   return (
     <Section id="how-it-works" title="How It Works" subtitle="Simple from start to finish.">
       {/* Step selector */}
-      <div className="flex flex-wrap items-center gap-3">
+      {/* Mobile: minimal number badges (below the card) */}
+
+      {/* Desktop: original chip row */}
+      <div className="hidden md:flex flex-wrap items-center gap-3">
         {steps.map((s, i) => {
           const Icon = s.icon;
           const isActive = active === i;
@@ -55,31 +58,31 @@ export default function HowItWorks() {
         })}
       </div>
 
-      {/* Progress bar / timeline */}
-      <div className="mt-4 h-1 w-full rounded-full bg-black/10">
+      {/* Progress bar / timeline (desktop only) */}
+      <div className="hidden md:block mt-4 h-1 w-full rounded-full bg-black/10">
         <div
           className="h-1 rounded-full bg-[var(--brand)] transition-all"
           style={{ width: `${((active + 1) / steps.length) * 100}%` }}
         />
       </div>
-      <div className="mt-2 flex justify-between text-[10px] text-black/50">
+      <div className="hidden md:flex mt-2 justify-between text-[10px] text-black/50">
         {steps.map((s, i) => (
           <span key={s.title} className={`${i <= active ? "text-[var(--brand)]/80" : ""}`}>Step {i + 1}</span>
         ))}
       </div>
 
       {/* Active step content */}
-      <Card className="mt-6 glass-soft glass-border">
+      <Card className="mt-4 md:mt-6 glass-soft glass-border">
         <MDiv
           key={active}
           initial={prefersReduced ? false : { opacity: 0, y: 8 }}
           animate={prefersReduced ? {} : { opacity: 1, y: 0 }}
           transition={{ duration: 0.35 }}
-          className="grid gap-6 p-6 sm:grid-cols-2"
+          className="grid gap-4 p-4 sm:gap-6 sm:p-6 sm:grid-cols-2"
         >
           <div>
             <div className="text-xs text-[var(--brand)]/80">Step {active + 1}</div>
-            <div className="mt-1 text-lg font-semibold text-[var(--brand)]">{steps[active].title}</div>
+            <div className="mt-1 text-base md:text-lg font-semibold text-[var(--brand)]">{steps[active].title}</div>
             <p className="mt-2 text-sm text-black/70">{steps[active].text}</p>
           </div>
           <ul className="grid gap-2 text-sm text-black/80">
@@ -91,6 +94,28 @@ export default function HowItWorks() {
           </ul>
         </MDiv>
       </Card>
+
+      {/* Mobile number badges positioned below the card */}
+      <div className="md:hidden mt-3 flex items-center justify-center gap-2">
+        {steps.map((_, i) => {
+          const isActive = active === i;
+          return (
+            <button
+              key={i}
+              type="button"
+              aria-label={`Go to step ${i + 1}`}
+              onClick={() => setActive(i)}
+              className={`size-8 inline-flex items-center justify-center rounded-full border text-sm font-semibold transition-colors ${
+                isActive
+                  ? "border-[var(--brand)] bg-[var(--brand)]/10 text-[var(--brand)]"
+                  : "border-black/10 bg-white/70 text-black/80 hover:bg-white"
+              }`}
+            >
+              {i + 1}
+            </button>
+          );
+        })}
+      </div>
 
       <div className="mt-6 flex gap-3 justify-center">
         <Button variant="secondary" onClick={() => setActive((a) => Math.max(0, a - 1))}>

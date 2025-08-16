@@ -55,31 +55,51 @@ export default function ServicesTabs({ clientOnly = true, defaultTabId = "insura
       };
 
   return (
-    <Section id="services" title={active.title} subtitle={active.subheading} className="py-16 md:py-24">
+    <Section id="services" title={active.title} subtitle={active.subheading} headingAlign="center" className="py-16 md:py-24">
       {/* Tabs */}
-      <div
-        role="tablist"
-        aria-label="Services"
-        className="flex w-full overflow-x-auto rounded-t-2xl border border-black/10 bg-white/70 p-1 glass-border supports-[backdrop-filter]:glass"
-      >
-        {tabs.map((tab) => {
-          const isActive = tab.id === active.id;
-          return (
-            <button
-              key={tab.id}
-              role="tab"
-              aria-selected={isActive}
-              aria-controls={`panel-${tab.id}`}
-              id={`tab-${tab.id}`}
-              onClick={() => setActiveId(tab.id)}
-              className={`flex-1 whitespace-nowrap rounded-t-2xl px-4 py-2 text-sm transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--brand)] focus-visible:ring-offset-2 cursor-pointer ${
-                isActive ? "bg-[var(--brand)]/10 border-b-2 border-[var(--brand)] text-[var(--brand)]" : "text-black/70 hover:text-black/80 hover:bg-white/80"
-              }`}
-            >
-              {tab.label}
-            </button>
-          );
-        })}
+      <div role="tablist" aria-label="Services" className="w-full">
+        {/* Mobile: 2-row grid */}
+        <div className="grid grid-cols-2 gap-1 sm:hidden rounded-t-2xl border border-black/10 bg-white/70 p-1 glass-border supports-[backdrop-filter]:glass max-w-md mx-auto justify-items-center">
+          {tabs.map((tab) => {
+            const isActive = tab.id === active.id;
+            return (
+              <button
+                key={tab.id}
+                role="tab"
+                aria-selected={isActive}
+                aria-controls={`panel-${tab.id}`}
+                id={`tab-${tab.id}`}
+                onClick={() => setActiveId(tab.id)}
+                className={`rounded-2xl px-3 py-2 text-xs font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--brand)] focus-visible:ring-offset-2 cursor-pointer ${
+                  isActive ? "bg-[var(--brand)]/10 border-b-2 border-[var(--brand)] text-[var(--brand)]" : "text-black/70 hover:text-black/80 hover:bg-white/80"
+                }`}
+              >
+                {tab.label}
+              </button>
+            );
+          })}
+        </div>
+        {/* Desktop: centered row */}
+        <div className="hidden sm:flex w-full justify-center overflow-x-visible rounded-t-2xl border border-black/10 bg-white/70 p-1 glass-border supports-[backdrop-filter]:glass max-w-3xl mx-auto">
+          {tabs.map((tab) => {
+            const isActive = tab.id === active.id;
+            return (
+              <button
+                key={tab.id}
+                role="tab"
+                aria-selected={isActive}
+                aria-controls={`panel-${tab.id}`}
+                id={`tab-${tab.id}`}
+                onClick={() => setActiveId(tab.id)}
+                className={`whitespace-nowrap rounded-t-2xl px-4 py-2 text-sm transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--brand)] focus-visible:ring-offset-2 cursor-pointer ${
+                  isActive ? "bg-[var(--brand)]/10 border-b-2 border-[var(--brand)] text-[var(--brand)]" : "text-black/70 hover:text-black/80 hover:bg-white/80"
+                }`}
+              >
+                {tab.label}
+              </button>
+            );
+          })}
+        </div>
       </div>
 
       {/* Panel */}

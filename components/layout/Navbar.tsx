@@ -103,8 +103,8 @@ export default function Navbar() {
             transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
             className="absolute inset-x-0 top-0 z-40 bg-transparent"
           >
-            <div className="mx-auto max-w-7xl px-4 sm:px-6 py-2 relative">
-              <div ref={barRef} className="flex h-16 items-center justify-between gap-4 rounded-2xl glass-border bg-white/70 supports-[backdrop-filter]:bg-white/60 backdrop-blur-md shadow-sm px-3">
+            <div className="py-2 relative">
+              <div ref={barRef} className="mx-auto w-[min(94vw,1200px)] flex h-16 items-center justify-between gap-4 rounded-2xl glass-border bg-white/70 supports-[backdrop-filter]:bg-white/60 backdrop-blur-md shadow-sm px-3">
                 {/* Left: Logo */}
                 <Link href="/" className="flex items-center gap-2 rounded-2xl px-2 py-2 hover:bg-black/5 focus-visible:ring-2 ring-[--brand] ring-offset-2">
                   <Image src="/mainPage/hero/heroLogoExtended.png" alt="Newline Financial & Insurance Solutions" width={240} height={36} className="h-8 w-auto sm:h-9" />

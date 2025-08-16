@@ -22,7 +22,7 @@ export default function ValueProps() {
   const MDiv = motion.div as unknown as React.ComponentType<SafeMotionDivProps>;
   return (
     <Section className="relative py-0">
-      <div className="relative min-h-[60vh] sm:min-h-[70vh]">
+      <div className="relative min-h-[75vh] sm:min-h-[70vh]">
         {/* Full-bleed background image */}
         <div aria-hidden className="absolute left-1/2 top-0 -translate-x-1/2 w-[100vw] h-full">
           <Image
@@ -37,13 +37,13 @@ export default function ValueProps() {
           <div aria-hidden className="absolute inset-0 bg-black/60" />
         </div>
         {/* Centered text over image */}
-        <div className="absolute inset-0 z-10 flex items-end justify-center pb-[16vh] md:pb-[18vh] lg:pb-[20vh]">
+        <div className="absolute inset-0 z-10 grid place-items-center px-4 sm:px-6 lg:px-8 py-12">
           <MDiv
             initial={prefersReduced ? false : { opacity: 0, y: 18 }}
             whileInView={prefersReduced ? { opacity: 1 } : { opacity: 1, y: 0 }}
             viewport={{ once: true, amount: 0.3 }}
             transition={{ duration: 0.6, ease: "easeOut" }}
-            className="mx-auto max-w-3xl text-center px-4 sm:px-6 lg:px-8"
+            className="mx-auto max-w-3xl text-center"
           >
             <div className="text-[11px] uppercase tracking-[0.28em] text-white/85">Advice that fits real life</div>
             <h2 className="mt-3 text-white text-[28px] sm:text-[34px] md:text-[40px] leading-tight font-semibold">

@@ -53,8 +53,18 @@ const ITEMS: Item[] = [
 ];
 
 export default function ServicesScrollStack() {
+  const [isMobile, setIsMobile] = React.useState(false);
+  React.useEffect(() => {
+    if (typeof window === "undefined" || !window.matchMedia) return;
+    const mq = window.matchMedia("(max-width: 767.98px)");
+    const update = () => setIsMobile(mq.matches);
+    update();
+    mq.addEventListener?.("change", update);
+    return () => mq.removeEventListener?.("change", update);
+  }, []);
   const STACK_GAP_PX = 120; // vertical offset between stacked cards
-  const CARD_SAFETY_PX = 560; // extra height so last sticky card fully clears before next section
+  // On mobile, give extra clearance to ensure the last card clears before next section
+  const CARD_SAFETY_PX = isMobile ? 1400 : 700;
   const wrapperStyle: React.CSSProperties = {
     height: `calc(100vh + ${(ITEMS.length - 1) * STACK_GAP_PX + CARD_SAFETY_PX}px)`,
   };

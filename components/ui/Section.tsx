@@ -10,6 +10,7 @@ type SectionProps = React.PropsWithChildren<{
   className?: string;
   title?: string;
   subtitle?: string;
+  headingAlign?: "left" | "center";
 }>;
 
 type SafeMotionDivProps = {
@@ -22,19 +23,19 @@ type SafeMotionDivProps = {
   transition?: unknown;
 };
 
-export default function Section({ id, className, title, subtitle, children }: SectionProps) {
+export default function Section({ id, className, title, subtitle, headingAlign = "left", children }: SectionProps) {
   const prefersReduced = useReducedMotion();
   const MDiv = motion.div as unknown as React.ComponentType<SafeMotionDivProps>;
   return (
     <section id={id} className={cn("py-16 sm:py-24", className)} aria-label={title ?? undefined}>
       <Container>
         {(title || subtitle) && (
-          <div className="mb-10 max-w-2xl">
+          <div className={cn("mb-10 max-w-2xl", headingAlign === "center" && "mx-auto") }>
             {subtitle && (
-              <p className="text-xs uppercase tracking-wider text-black/60">{subtitle}</p>
+              <p className={cn("text-xs uppercase tracking-wider text-black/60", headingAlign === "center" && "text-center")}>{subtitle}</p>
             )}
             {title && (
-              <h2 className="mt-2 text-2xl sm:text-3xl font-semibold tracking-tight">
+              <h2 className={cn("mt-2 text-2xl sm:text-3xl font-semibold tracking-tight", headingAlign === "center" && "text-center")}>
                 {title}
               </h2>
             )}

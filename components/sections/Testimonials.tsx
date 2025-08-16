@@ -7,7 +7,7 @@ import TestimonialCarousel from "@/components/ui/TestimonialCarousel";
 
 export default function Testimonials() {
   return (
-    <Section title="What clients say">
+    <Section title="What clients say" headingAlign="center">
       <div className="max-w-5xl mx-auto">
         <TestimonialCarousel items={content.testimonials} autoPlay autoPlayMs={6000} />
       </div>

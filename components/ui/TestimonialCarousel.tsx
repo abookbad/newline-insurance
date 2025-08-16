@@ -45,6 +45,22 @@ export default function TestimonialCarousel({
   const regionRef = React.useRef<HTMLDivElement | null>(null);
   const hoverOrFocusRef = React.useRef(false);
   const autoRef = React.useRef<number | null>(null);
+  const [isMobile, setIsMobile] = React.useState(false);
+
+  React.useEffect(() => {
+    if (typeof window === "undefined") return;
+    const mq = window.matchMedia("(min-width: 768px)");
+    const update = () => setIsMobile(!mq.matches);
+    update();
+    if (typeof mq.addEventListener === "function") {
+      mq.addEventListener("change", update);
+      return () => mq.removeEventListener("change", update);
+    } else {
+      // Safari
+      mq.addListener(update);
+      return () => mq.removeListener(update);
+    }
+  }, []);
 
   const goTo = React.useCallback((index: number) => {
     setActiveIndex((index + itemCount) % itemCount);
@@ -101,17 +117,22 @@ export default function TestimonialCarousel({
       {/* Offscreen announcement for SRs when slide changes */}
       <span className="sr-only" aria-live="polite">{announce}</span>
 
-      {/* Controls - mobile stacked full-row, desktop outside */}
-      <div className="mb-4 md:mb-6 md:hidden grid grid-cols-1 gap-2">
-        <ArrowButton direction="prev" onClick={prev} className="w-full" />
-        <ArrowButton direction="next" onClick={next} className="w-full" />
-      </div>
-      <ArrowButton direction="prev" onClick={prev} className="hidden md:inline-flex md:absolute md:-left-14 md:top-1/2 md:-translate-y-1/2" />
-      <ArrowButton direction="next" onClick={next} className="hidden md:inline-flex md:absolute md:-right-14 md:top-1/2 md:-translate-y-1/2" />
+      {/* Controls - exactly one set rendered depending on viewport */}
+      {isMobile ? (
+        <div className="mb-3 flex items-center justify-center gap-3">
+          <ArrowButton direction="prev" onClick={prev} />
+          <ArrowButton direction="next" onClick={next} />
+        </div>
+      ) : (
+        <>
+          <ArrowButton direction="prev" onClick={prev} className="md:inline-flex md:absolute md:-left-10 md:top-1/2 md:-translate-y-1/2" />
+          <ArrowButton direction="next" onClick={next} className="md:inline-flex md:absolute md:-right-10 md:top-1/2 md:-translate-y-1/2" />
+        </>
+      )}
 
       {/* Track */}
       <MDiv
-        className="flex items-stretch gap-4 md:gap-6 overflow-hidden select-none"
+        className="flex items-stretch gap-3 md:gap-6 overflow-hidden select-none"
         drag={prefersReduced ? false : "x"}
         dragConstraints={{ left: 0, right: 0 }}
         dragElastic={0.2}
@@ -122,27 +143,27 @@ export default function TestimonialCarousel({
         }}
         transition={{ duration: DURATION, ease: EASE }}
       >
-        <CarouselCard variant="side" item={items[prevIndex]} />
         <CarouselCard variant="center" item={items[activeIndex]} />
-        <CarouselCard variant="side" item={items[nextIndex]} />
       </MDiv>
 
-      {/* Dots */}
-      <div className="mt-6 flex justify-center gap-2">
-        {items.map((_, i) => (
-          <button
-            key={i}
-            type="button"
-            aria-label={`Go to slide ${i + 1}`}
-            aria-current={i === activeIndex}
-            onClick={() => goTo(i)}
-            className={cn(
-              "h-2.5 w-2.5 rounded-full border glass-border cursor-pointer transition-transform focus-visible:ring-2 ring-[--brand] ring-offset-2",
-              i === activeIndex ? "bg-black/70 border-black/20" : "bg-black/20 hover:bg-black/30 hover:scale-110 border-black/20"
-            )}
-          />
-        ))}
-      </div>
+      {/* Dots (desktop only) */}
+      {!isMobile && (
+        <div className="mt-4 md:mt-6 flex justify-center gap-2">
+          {items.map((_, i) => (
+            <button
+              key={i}
+              type="button"
+              aria-label={`Go to slide ${i + 1}`}
+              aria-current={i === activeIndex}
+              onClick={() => goTo(i)}
+              className={cn(
+                "h-2.5 w-2.5 rounded-full border glass-border cursor-pointer transition-transform focus-visible:ring-2 ring-[--brand] ring-offset-2",
+                i === activeIndex ? "bg-black/70 border-black/20" : "bg-black/20 hover:bg-black/30 hover:scale-110 border-black/20"
+              )}
+            />
+          ))}
+        </div>
+      )}
     </div>
   );
 }
