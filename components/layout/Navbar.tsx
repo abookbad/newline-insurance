@@ -94,8 +94,8 @@ export default function Navbar() {
 
                 {/* Right: CTAs */}
                 <div className="hidden md:flex items-center gap-2">
-                  <Button variant="secondary" href="tel:+19517049422" className="rounded-full">Call Us</Button>
-                  <Button variant="primary" href="/apply" className="rounded-full hover:shadow-[0_0_0_4px_rgba(11,34,64,0.08)] hover-lift">Get a Quote</Button>
+                  <Button variant="secondary" href="tel:+19517049422" className="rounded-[12px]">Call Us</Button>
+                  <Button variant="primary" href="/apply" className="rounded-[12px] hover:shadow-[0_0_0_4px_rgba(11,34,64,0.08)] hover-lift">Get a Quote</Button>
                 </div>
 
                 {/* Mobile hamburger */}

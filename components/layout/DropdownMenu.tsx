@@ -73,7 +73,7 @@ export default function DropdownMenu({ label, items }: DropdownMenuProps) {
         aria-expanded={open}
         onClick={() => setOpen((v) => !v)}
         className={cn(
-          "relative px-3 py-2 rounded-2xl text-sm font-medium text-[var(--brand)]/90 hover:bg-black/5 focus-visible:ring-2 ring-[--brand] ring-offset-2",
+          "relative px-3 py-2 rounded-[12px] text-sm font-medium text-[var(--brand)]/90 hover:bg-black/5 focus-visible:ring-2 ring-[--brand] ring-offset-2",
           "transition-transform hover:-translate-y-0.5"
         )}
       >

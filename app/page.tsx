@@ -9,6 +9,7 @@ import Testimonials from "@/components/sections/Testimonials";
 import FAQ from "@/components/sections/FAQ";
 import Compliance from "@/components/sections/Compliance";
 import ServicesTabs from "@/components/sections/ServicesTabs";
+import ServicesScrollStack from "@/components/sections/ServicesScrollStack";
 
 export default function Page() {
   return (
@@ -16,6 +17,7 @@ export default function Page() {
       <Hero />
       <ServicesTabs clientOnly />
       <ValueProps />
+      <ServicesScrollStack />
       <HowItWorks />
       <WhyChoose />
       <Testimonials />

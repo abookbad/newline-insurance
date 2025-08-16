@@ -92,7 +92,7 @@ export default function HowItWorks() {
         </MDiv>
       </Card>
 
-      <div className="mt-6 flex gap-3">
+      <div className="mt-6 flex gap-3 justify-center">
         <Button variant="secondary" onClick={() => setActive((a) => Math.max(0, a - 1))}>
           Back
         </Button>

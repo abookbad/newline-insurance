@@ -10,7 +10,7 @@ type ButtonProps = React.ButtonHTMLAttributes<HTMLButtonElement> & {
 };
 
 const base =
-  "inline-flex items-center justify-center rounded-2xl text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-black/20 disabled:opacity-50 disabled:cursor-not-allowed cursor-pointer";
+  "inline-flex items-center justify-center rounded-[12px] text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-black/20 disabled:opacity-50 disabled:cursor-not-allowed cursor-pointer";
 const variants: Record<string, string> = {
   primary:
     "bg-[var(--brand)] text-white hover:brightness-110 shadow-sm px-5 py-3",

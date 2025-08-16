@@ -104,7 +104,7 @@ export const servicesTabs: ServiceTab[] = [
     title: "Insurance Planning",
     subheading: "Protect your life, assets, and income with tailored coverage.",
     image: {
-      src: "/services/insurance-planning.jpg",
+      src: "/services/insurance-planning.jpeg",
       alt: "Family reviewing insurance plan at a kitchen table",
       focal: "right",
     },
@@ -126,45 +126,11 @@ export const servicesTabs: ServiceTab[] = [
     legalNote: "Product availability and features vary by state and carrier.",
   },
   {
-    id: "estate",
-    label: "Estate & Legacy",
-    title: "Estate & Legacy",
-    subheading: "Transfer wealth efficiently and leave a lasting legacy.",
-    image: { src: "/services/estate-legacy.jpg", alt: "Attorney reviewing estate documents with clients", focal: "center" },
-    highlights: ["Trusts & Wills", "Family Bank", "Charitable Giving"],
-    subservices: [
-      { icon: "ScrollText", heading: "Trusts & Wills", text: "Coordinate documents with licensed professionals to direct wealth transfer and protect beneficiaries." },
-      { icon: "Activity", heading: "Family Bank Frameworks", text: "Use structured strategies to fund goals, teach stewardship, and support future generations." },
-      { icon: "PieChart", heading: "Charitable Giving", text: "Align giving with your values using tax‑aware strategies that support causes you care about." },
-    ],
-    faqs: [
-      { q: "Do I need a trust or a will?", a: "A will outlines how your assets will be distributed, while a trust can help manage and protect those assets during your lifetime and after. Many families use both to ensure a smooth transfer of wealth and minimize legal challenges." },
-      { q: "Can I update beneficiaries later?", a: "Yes. You can update your beneficiaries at any time to reflect changes such as marriage, divorce, or the birth of a child. Regular reviews ensure your plan stays aligned with your wishes." },
-    ],
-  },
-  {
-    id: "tax",
-    label: "Tax Strategy",
-    title: "Tax Strategy",
-    subheading: "Optimize your taxes to keep more of what you earn.",
-    image: { src: "/services/tax-strategy.jpg", alt: "Advisor discussing tax planning with client", focal: "left" },
-    highlights: ["Tax Mitigation", "Zero‑tax Concepts", "Roth Conversions"],
-    subservices: [
-      { icon: "Calculator", heading: "Tax Mitigation", text: "Coordinate with qualified tax professionals to reduce drag and improve take‑home results." },
-      { icon: "PieChart", heading: "Zero‑tax Concepts", text: "Explore structures that shift growth and withdrawals toward tax‑advantaged outcomes where suitable." },
-      { icon: "Calculator", heading: "Roth Conversions", text: "Plan timing and amounts to balance today’s taxes with long‑term flexibility." },
-    ],
-    faqs: [
-      { q: "Do you file taxes?", a: "We do not file tax returns directly, but we work closely with qualified tax professionals to ensure your financial plan is implemented in a tax-efficient manner." },
-      { q: "Are zero-tax strategies guaranteed?", a: "No strategy can guarantee a zero-tax outcome in all cases. However, we design plans that maximize available deductions, credits, and legal tax shelters to minimize your liability." },
-    ],
-  },
-  {
     id: "retirement",
     label: "Retirement & Investment",
     title: "Retirement & Investment",
     subheading: "Plan for dependable income and sustainable growth.",
-    image: { src: "/services/retirement-investment.jpg", alt: "Couple reviewing retirement plan", focal: "right" },
+    image: { src: "/services/retirement-investment.jpeg", alt: "Couple reviewing retirement plan", focal: "right" },
     highlights: ["Rollovers", "Annuity Income", "Risk‑Aligned Growth"],
     subservices: [
       { icon: "PieChart", heading: "Retirement Income Planning", text: "Map predictable income with annuities and structured withdrawals to cover essentials." },
@@ -177,20 +143,20 @@ export const servicesTabs: ServiceTab[] = [
     ],
   },
   {
-    id: "college",
-    label: "College Planning",
-    title: "College Planning",
-    subheading: "Fund education with smart, tax‑efficient strategies.",
-    image: { src: "/services/college-planning.jpg", alt: "Parent and teen planning college finances", focal: "center" },
-    highlights: ["Funding Strategy", "Aid Awareness", "Early Accumulation"],
+    id: "estate",
+    label: "Estate & Legacy",
+    title: "Estate & Legacy",
+    subheading: "Transfer wealth efficiently and leave a lasting legacy.",
+    image: { src: "/services/estate-legacy.jpeg", alt: "Attorney reviewing estate documents with clients", focal: "center" },
+    highlights: ["Trusts & Wills", "Family Bank", "Charitable Giving"],
     subservices: [
-      { icon: "GraduationCap", heading: "529 Plans", text: "Use tax‑advantaged accounts for education expenses with flexible beneficiary options." },
-      { icon: "Calculator", heading: "Financial Aid Optimization", text: "Coordinate savings, scholarships, and aid to maximize opportunities." },
-      { icon: "ScrollText", heading: "Education Trusts", text: "Set guardrails for how and when education funds are used." },
+      { icon: "ScrollText", heading: "Trusts & Wills", text: "Coordinate documents with licensed professionals to direct wealth transfer and protect beneficiaries." },
+      { icon: "Activity", heading: "Family Bank Frameworks", text: "Use structured strategies to fund goals, teach stewardship, and support future generations." },
+      { icon: "PieChart", heading: "Charitable Giving", text: "Align giving with your values using tax‑aware strategies that support causes you care about." },
     ],
     faqs: [
-      { q: "What if my child gets a scholarship?", a: "Most 529 plans allow you to reassign the beneficiary to another family member or use the funds for other qualified education expenses. Some plans also allow a portion to be withdrawn without penalty." },
-      { q: "Can I change beneficiaries?", a: "Yes. With most education savings plans, you can change the beneficiary to another qualifying family member without tax penalties." },
+      { q: "Do I need a trust or a will?", a: "A will outlines how your assets will be distributed, while a trust can help manage and protect those assets during your lifetime and after. Many families use both to ensure a smooth transfer of wealth and minimize legal challenges." },
+      { q: "Can I update beneficiaries later?", a: "Yes. You can update your beneficiaries at any time to reflect changes such as marriage, divorce, or the birth of a child. Regular reviews ensure your plan stays aligned with your wishes." },
     ],
   },
   {
@@ -198,7 +164,7 @@ export const servicesTabs: ServiceTab[] = [
     label: "Business Owner Planning",
     title: "Business Owner Planning",
     subheading: "Protect, optimize, and grow your business.",
-    image: { src: "/services/business-owner.jpg", alt: "Small business partners meeting", focal: "right" },
+    image: { src: "/services/business-owner.jpeg", alt: "Small business partners meeting", focal: "right" },
     highlights: ["Key Person", "Buy‑Sell", "Benefits & DB/CB Plans"],
     subservices: [
       { icon: "BriefcaseBusiness", heading: "Buy‑Sell Agreements", text: "Fund ownership transitions with certainty and protect both parties." },
@@ -375,7 +341,7 @@ export const servicePages: ServicePageContent[] = [
     hero: {
       title: "Life Insurance",
       tagline: "Protect income, secure goals, and build a safety net your family can count on.",
-      image: { src: "/services/insurance-planning.jpg", alt: "Parents reviewing life insurance options at home" },
+      image: { src: "/services/insurance-planning.jpeg", alt: "Parents reviewing life insurance options at home" },
     },
     overview: [
       "Life insurance coverage replaces income and safeguards family goals if the unexpected happens.",
@@ -408,7 +374,7 @@ export const servicePages: ServicePageContent[] = [
     hero: {
       title: "Medicare",
       tagline: "Compare plan types and enroll with confidence—no jargon, just clear guidance.",
-      image: { src: "/services/retirement-investment.jpg", alt: "Advisor reviewing Medicare options with client" },
+      image: { src: "/services/retirement-investment.jpeg", alt: "Advisor reviewing Medicare options with client" },
     },
     overview: [
       "Your Medicare choices affect care, costs, and flexibility. We help you time enrollment, compare Medicare Advantage vs. Medigap + Part D, and review annually.",
@@ -439,7 +405,7 @@ export const servicePages: ServicePageContent[] = [
     hero: {
       title: "Final Expense",
       tagline: "Affordable coverage to help loved ones handle funeral and last expenses.",
-      image: { src: "/services/estate-legacy.jpg", alt: "Family supporting each other" },
+      image: { src: "/services/estate-legacy.jpeg", alt: "Family supporting each other" },
     },
     overview: [
       "Final expense insurance is a small, simplified policy designed to cover funeral and related costs so savings stay intact.",
@@ -470,7 +436,7 @@ export const servicePages: ServicePageContent[] = [
     hero: {
       title: "Disability Insurance",
       tagline: "Protect your paycheck if illness or injury keeps you from working.",
-      image: { src: "/services/business-owner.jpg", alt: "Professional reviewing disability insurance" },
+      image: { src: "/services/business-owner.jpeg", alt: "Professional reviewing disability insurance" },
     },
     overview: [
       "Disability insurance replaces a portion of income if you can’t work due to illness or injury—essential protection for most earners.",
@@ -501,7 +467,7 @@ export const servicePages: ServicePageContent[] = [
     hero: {
       title: "Long‑Term Care",
       tagline: "Plan for care costs and protect family from the financial and emotional strain.",
-      image: { src: "/services/college-planning.jpg", alt: "Senior receiving support from family" },
+      image: { src: "/services/college-planning.jpeg", alt: "Senior receiving support from family" },
     },
     overview: [
       "Long‑term care insurance helps cover home care, assisted living, or nursing care so savings last and choices remain yours.",
@@ -532,7 +498,7 @@ export const servicePages: ServicePageContent[] = [
     hero: {
       title: "Retirement Planning",
       tagline: "Turn savings into sustainable income and invest with risk awareness.",
-      image: { src: "/services/retirement-investment.jpg", alt: "Couple reviewing retirement plan" },
+      image: { src: "/services/retirement-investment.jpeg", alt: "Couple reviewing retirement plan" },
     },
     overview: [
       "We build retirement income strategies using annuities, Social Security timing, and tax‑aware withdrawals—aligned to your goals and comfort.",
@@ -563,7 +529,7 @@ export const servicePages: ServicePageContent[] = [
     hero: {
       title: "Estate & Legacy Planning",
       tagline: "Transfer wealth efficiently and support what matters most.",
-      image: { src: "/services/estate-legacy.jpg", alt: "Family discussing estate plans" },
+      image: { src: "/services/estate-legacy.jpeg", alt: "Family discussing estate plans" },
     },
     overview: [
       "Coordinate beneficiary designations, trusts, and policy strategies so assets flow as intended with minimal friction.",
@@ -594,7 +560,7 @@ export const servicePages: ServicePageContent[] = [
     hero: {
       title: "Tax Strategy & Optimization",
       tagline: "Keep more of what you earn with coordinated, compliant strategies.",
-      image: { src: "/services/tax-strategy.jpg", alt: "Professional analyzing taxes" },
+      image: { src: "/services/tax-strategy.jpeg", alt: "Professional analyzing taxes" },
     },
     overview: [
       "We coordinate with tax professionals to manage brackets, capital gains, and conversions—aiming to improve after‑tax outcomes, not just pre‑tax balances.",
