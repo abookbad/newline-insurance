@@ -131,7 +131,7 @@ export default function DropdownMenu({ label, items }: DropdownMenuProps) {
             initial={prefersReduced ? false : { opacity: 0, y: 8 }}
             animate={prefersReduced ? { opacity: 1 } : { opacity: 1, y: 0 }}
             transition={{ duration: 0.22, ease: [0.22, 1, 0.36, 1] }}
-            className="absolute left-1/2 -translate-x-1/2 md:left-0 md:translate-x-0 mt-2 w-[min(90vw,18rem)] rounded-2xl border glass-border bg-white/70 supports-[backdrop-filter]:bg-white/60 backdrop-blur-md shadow-lg p-2 z-30"
+            className="fixed left-1/2 -translate-x-1/2 top-[72px] md:absolute md:left-0 md:translate-x-0 md:top-auto md:mt-2 w-[min(92vw,20rem)] rounded-2xl border glass-border bg-white/70 supports-[backdrop-filter]:bg-white/60 backdrop-blur-md shadow-lg p-2 z-30"
           >
           <ul className="grid gap-1" role="none">
             {items.map((item) => (
