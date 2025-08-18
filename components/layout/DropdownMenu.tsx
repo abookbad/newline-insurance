@@ -166,6 +166,8 @@ export default function DropdownMenu({ label, items }: DropdownMenuProps) {
           transition?: unknown;
           ref?: React.Ref<HTMLDivElement>;
           style?: React.CSSProperties;
+          onMouseEnter?: () => void;
+          onMouseLeave?: () => void;
         };
         const MDiv = motion.div as unknown as React.ComponentType<SafeMotionDivProps>;
         const menu = (
