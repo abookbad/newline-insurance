@@ -101,7 +101,7 @@ export default function Navbar() {
             initial={prefersReduced ? false : { opacity: 0, y: -10 }}
             animate={prefersReduced ? { opacity: 1 } : { opacity: 1, y: 0 }}
             transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
-            className="absolute inset-x-0 top-0 z-40 bg-transparent"
+            className="fixed inset-x-0 top-0 z-40 bg-transparent"
           >
             <div className="py-2 relative">
               <div ref={barRef} className="mx-auto w-[min(94vw,1200px)] grid items-center grid-cols-[200px,1fr,auto] gap-x-4 rounded-2xl glass-border bg-white/70 supports-[backdrop-filter]:bg-white/60 backdrop-blur-md shadow-sm px-3 py-2">

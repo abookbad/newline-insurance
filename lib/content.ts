@@ -510,7 +510,7 @@ export const servicePages: ServicePageContent[] = [
     hero: {
       title: "Retirement Planning",
       tagline: "Turn savings into sustainable income and invest with risk awareness.",
-      image: { src: "/services/retirement-investment.jpeg", alt: "Couple reviewing retirement plan" },
+      image: { src: "/business-solutions/retirement-solutions.jpeg", alt: "Couple reviewing retirement plan" },
     },
     overview: [
       "We build retirement income strategies using annuities, Social Security timing, and tax‑aware withdrawals—aligned to your goals and comfort.",
@@ -541,7 +541,7 @@ export const servicePages: ServicePageContent[] = [
     hero: {
       title: "Estate & Legacy Planning",
       tagline: "Transfer wealth efficiently and support what matters most.",
-      image: { src: "/services/estate-legacy.jpeg", alt: "Family discussing estate plans" },
+      image: { src: "/business-solutions/business-planning.jpeg", alt: "Family discussing estate plans" },
     },
     overview: [
       "Coordinate beneficiary designations, trusts, and policy strategies so assets flow as intended with minimal friction.",
@@ -572,7 +572,7 @@ export const servicePages: ServicePageContent[] = [
     hero: {
       title: "Insurance Planning",
       tagline: "Protect income, assets, and goals with coverage tailored to your life.",
-      image: { src: "/services/insurance-planning.jpeg", alt: "Family reviewing insurance plan at a kitchen table" },
+      image: { src: "/business-solutions/group-benefits.jpeg", alt: "Family reviewing insurance plan at a kitchen table" },
     },
     overview: [
       "We match policy designs to your budget and goals today—with room to adjust tomorrow.",
@@ -601,7 +601,7 @@ export const servicePages: ServicePageContent[] = [
     hero: {
       title: "Investment Planning",
       tagline: "Align portfolios to your goals, time horizon, and risk comfort.",
-      image: { src: "/services/retirement-investment.jpeg", alt: "Couple reviewing investments at a desk" },
+      image: { src: "/business-solutions/retirement-solutions.jpeg", alt: "Couple reviewing investments at a desk" },
     },
     overview: [
       "We design risk‑aware allocations, coordinate accounts, and focus on what you can control.",
@@ -630,7 +630,7 @@ export const servicePages: ServicePageContent[] = [
     hero: {
       title: "Real Estate Planning",
       tagline: "Integrate property decisions with your cash flow, taxes, and legacy.",
-      image: { src: "/services/estate-legacy.jpeg", alt: "Clients reviewing documents with advisor" },
+      image: { src: "/business-solutions/business-planning.jpeg", alt: "Clients reviewing documents with advisor" },
     },
     overview: [
       "We evaluate buy/sell/hold choices, debt structure, and how properties fit the broader plan.",
@@ -659,7 +659,7 @@ export const servicePages: ServicePageContent[] = [
     hero: {
       title: "Tax Strategy & Optimization",
       tagline: "Keep more of what you earn with coordinated, compliant strategies.",
-      image: { src: "/services/tax-strategy.jpeg", alt: "Professional analyzing taxes" },
+      image: { src: "/business-solutions/strategic-tax-planning.jpeg", alt: "Professional analyzing taxes" },
     },
     overview: [
       "We coordinate with tax professionals to manage brackets, capital gains, and conversions—aiming to improve after‑tax outcomes, not just pre‑tax balances.",
