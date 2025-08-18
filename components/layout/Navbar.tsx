@@ -104,51 +104,34 @@ export default function Navbar() {
             className="absolute inset-x-0 top-0 z-40 bg-transparent"
           >
             <div className="py-2 relative">
-              <div ref={barRef} className="mx-auto w-[min(94vw,1200px)] grid items-center grid-cols-[220px,1fr,auto] grid-rows-[auto_auto] gap-x-4 gap-y-1 rounded-2xl glass-border bg-white/70 supports-[backdrop-filter]:bg-white/60 backdrop-blur-md shadow-sm px-3 py-2">
+              <div ref={barRef} className="mx-auto w-[min(94vw,1200px)] grid items-center grid-cols-[220px,1fr,auto] gap-x-4 rounded-2xl glass-border bg-white/70 supports-[backdrop-filter]:bg-white/60 backdrop-blur-md shadow-sm px-3 py-2">
                 {/* Left: Logo */}
                 <Link href="/" className="col-start-1 row-span-2 self-stretch w-full h-full flex items-center justify-center gap-2 rounded-2xl px-2 hover:bg-black/5 focus-visible:ring-2 ring-[--brand] ring-offset-2">
                   <Image src="/mainPage/hero/heroLogoExtended.png" alt="Newline Financial & Insurance Solutions" width={180} height={30} className="h-7 w-auto sm:h-8" />
                 </Link>
 
-                {/* Center: Nav rows (desktop) */}
+                {/* Center: Single-row nav (desktop) */}
                 {(() => {
-                  const topTitles = ["Insurance Solutions", "Business Solutions", "Planning Services"] as const;
-                  const bottomTitles = ["Agency Platform", "About Us", "Contact"] as const;
-                  const topLinks = navLinks.filter((l) => (topTitles as readonly string[]).includes(l.title));
-                  const bottomLinks = navLinks.filter((l) => (bottomTitles as readonly string[]).includes(l.title));
+                  const order = ["Insurance Solutions", "Business Solutions", "Planning Services", "Agency Platform", "About Us", "Contact"] as const;
+                  const links = navLinks.filter((l) => (order as readonly string[]).includes(l.title));
                   return (
-                    <>
-                      <nav className="hidden md:flex col-start-2 row-start-1 flex-wrap items-center justify-center gap-x-1 gap-y-1">
-                        {topLinks.map((l) => (
-                          l.children ? (
-                            <DropdownMenu key={l.title} label={l.title} items={l.children} />
-                          ) : (
-                            <NavLink key={l.href} href={l.href!}>{l.title}</NavLink>
-                          )
-                        ))}
-                      </nav>
-                      <nav className="hidden md:flex col-start-2 row-start-2 flex-wrap items-center justify-center gap-x-1 gap-y-1">
-                        {bottomLinks.map((l) => (
-                          l.children ? (
-                            <DropdownMenu key={l.title} label={l.title} items={l.children} />
-                          ) : (
-                            <NavLink key={l.href} href={l.href!}>{l.title}</NavLink>
-                          )
-                        ))}
-                      </nav>
-                    </>
+                    <nav className="hidden md:flex col-start-2 items-center justify-center gap-x-1 overflow-x-auto whitespace-nowrap">
+                      {links.map((l) => (
+                        l.children ? (
+                          <DropdownMenu key={l.title} label={l.title} items={l.children} />
+                        ) : (
+                          <NavLink key={l.href} href={l.href!}>{l.title}</NavLink>
+                        )
+                      ))}
+                    </nav>
                   );
                 })()}
 
                 {/* Right: CTAs split by row */}
-                <div className="hidden md:flex col-start-3 row-start-1 items-center justify-end gap-2">
-                  <Button variant="secondary" href="tel:+19517049422" className="rounded-[12px]">Call Us</Button>
+                <div className="hidden md:flex col-start-3 items-center justify-end gap-2">
                   <Button variant="primary" href="/apply" className="rounded-[12px] hover:shadow-[0_0_0_4px_rgba(11,34,64,0.08)] hover-lift">Get a Quote</Button>
                 </div>
-                <div className="hidden md:flex col-start-3 row-start-2 items-center justify-end gap-2">
-                  <Button variant="ghost" href="/agents" className="rounded-[12px]">Become an agent</Button>
-                  <Button variant="ghost" href="/partners" className="rounded-[12px]">Become a partner</Button>
-                </div>
+                
 
                 {/* Mobile hamburger */}
                 <button
@@ -251,7 +234,6 @@ export default function Navbar() {
               </nav>
               <div className="mt-auto p-4 border-t border-black/10">
                 <div className="grid gap-2">
-                  <Button variant="secondary" href="tel:+19517049422">Call Us</Button>
                   <Button variant="primary" href="/apply">Get a Quote</Button>
                 </div>
                 <a
