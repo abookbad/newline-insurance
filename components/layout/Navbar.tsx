@@ -104,7 +104,7 @@ export default function Navbar() {
             className="absolute inset-x-0 top-0 z-40 bg-transparent"
           >
             <div className="py-2 relative">
-              <div ref={barRef} className="mx-auto w-[min(94vw,1200px)] grid items-center grid-cols-[220px,1fr,auto] gap-x-4 rounded-2xl glass-border bg-white/70 supports-[backdrop-filter]:bg-white/60 backdrop-blur-md shadow-sm px-3 py-2">
+              <div ref={barRef} className="mx-auto w-[min(94vw,1200px)] grid items-center grid-cols-[200px,1fr,auto] gap-x-4 rounded-2xl glass-border bg-white/70 supports-[backdrop-filter]:bg-white/60 backdrop-blur-md shadow-sm px-3 py-2">
                 {/* Left: Logo */}
                 <Link href="/" className="col-start-1 row-span-2 self-stretch w-full h-full flex items-center justify-center gap-2 rounded-2xl px-2 hover:bg-black/5 focus-visible:ring-2 ring-[--brand] ring-offset-2">
                   <Image src="/mainPage/hero/heroLogoExtended.png" alt="Newline Financial & Insurance Solutions" width={180} height={30} className="h-7 w-auto sm:h-8" />
@@ -115,7 +115,7 @@ export default function Navbar() {
                   const order = ["Insurance Solutions", "Business Solutions", "Planning Services", "Agency Platform", "About Us", "Contact"] as const;
                   const links = navLinks.filter((l) => (order as readonly string[]).includes(l.title));
                   return (
-                    <nav className="hidden md:flex col-start-2 items-center justify-center gap-x-1 overflow-x-auto whitespace-nowrap">
+                    <nav className="hidden md:flex col-start-2 items-center justify-center gap-x-1 whitespace-nowrap">
                       {links.map((l) => (
                         l.children ? (
                           <DropdownMenu key={l.title} label={l.title} items={l.children} />
@@ -129,7 +129,7 @@ export default function Navbar() {
 
                 {/* Right: CTAs split by row */}
                 <div className="hidden md:flex col-start-3 items-center justify-end gap-2">
-                  <Button variant="primary" href="/apply" className="rounded-[12px] hover:shadow-[0_0_0_4px_rgba(11,34,64,0.08)] hover-lift">Get a Quote</Button>
+                  <Button variant="primary" href="/apply" className="rounded-[12px] px-4 py-2 hover:shadow-[0_0_0_4px_rgba(11,34,64,0.08)] hover-lift">Get a Quote</Button>
                 </div>
                 
 
