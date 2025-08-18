@@ -4,7 +4,7 @@ import React from "react";
 import { motion, useReducedMotion } from "framer-motion";
 import Section from "@/components/ui/Section";
 import { servicesTabs, ServicesTab } from "@/lib/content";
-import { Shield, ScrollText, Calculator, PieChart, GraduationCap, BriefcaseBusiness, Activity, HeartPulse, ChevronDown } from "lucide-react";
+import { Shield, ScrollText, Calculator, PieChart, GraduationCap, BriefcaseBusiness, Activity, HeartPulse, ChevronDown, Feather } from "lucide-react";
 import Image from "next/image";
 import SharedCtaBar from "@/components/sections/SharedCtaBar";
 
@@ -17,6 +17,7 @@ const iconRegistry: Record<string, React.ComponentType<React.SVGProps<SVGSVGElem
   BriefcaseBusiness,
   Activity,
   HeartPulse,
+  Feather,
 };
 
 export type ServicesTabsProps = {
@@ -116,17 +117,17 @@ export default function ServicesTabs({ clientOnly = true, defaultTabId = "insura
         {(() => {
           const t = active;
           const HeadingIcon = iconRegistry[
-            t.id === "insurance"
+            t.id === "life"
               ? "Shield"
-              : t.id === "estate"
-              ? "ScrollText"
-              : t.id === "tax"
-              ? "Calculator"
-              : t.id === "retirement"
-              ? "PieChart"
-              : t.id === "college"
-              ? "GraduationCap"
-              : "BriefcaseBusiness"
+              : t.id === "medicare"
+              ? "HeartPulse"
+              : t.id === "final-expense"
+              ? "Feather"
+              : t.id === "disability"
+              ? "Activity"
+              : t.id === "ltc"
+              ? "HeartPulse"
+              : "Shield"
           ];
           return (
             <div className="grid gap-6 lg:grid-cols-12">

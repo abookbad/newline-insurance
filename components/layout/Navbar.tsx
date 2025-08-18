@@ -9,6 +9,7 @@ import NavLink from "@/components/layout/NavLink";
 import DropdownMenu from "@/components/layout/DropdownMenu";
 import Button from "@/components/ui/Button";
 import { cn } from "@/components/ui/lib";
+import { Phone } from "lucide-react";
 
 type SafeMotionLiProps = {
   children?: React.ReactNode;
@@ -129,6 +130,13 @@ export default function Navbar() {
 
                 {/* Right: CTAs split by row */}
                 <div className="hidden md:flex col-start-3 items-center justify-end gap-2">
+                  <a
+                    href="tel:+19517049422"
+                    aria-label="Call us"
+                    className="inline-flex h-10 w-10 items-center justify-center rounded-xl border glass-border bg-white/70 supports-[backdrop-filter]:bg-white/60 hover:bg-white shadow-sm text-[var(--brand)]"
+                  >
+                    <Phone className="h-5 w-5" aria-hidden />
+                  </a>
                   <Button variant="primary" href="/apply" className="rounded-[12px] px-4 py-2 hover:shadow-[0_0_0_4px_rgba(11,34,64,0.08)] hover-lift">Get a Quote</Button>
                 </div>
                 

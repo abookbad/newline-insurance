@@ -58,7 +58,7 @@ export default function BusinessSolutionsShowcase() {
               href={item.href}
               className={[
                 "relative overflow-hidden rounded-2xl border glass-border shadow-sm",
-                "transition-[flex-grow] duration-900 ease-[cubic-bezier(0.22,1,0.36,1)]",
+                "transition-[flex-grow] duration-[1400ms] ease-[cubic-bezier(0.22,1,0.36,1)]",
                 isActive ? "flex-[3]" : active == null ? "flex-1" : "flex-[0.8]",
                 "h-64 lg:h-80",
               ].join(" ")}
@@ -75,7 +75,7 @@ export default function BusinessSolutionsShowcase() {
                   </div>
                   <p
                     className={[
-                      "mt-2 text-white/85 max-w-md mx-auto transition-all duration-500 ease-out",
+                      "mt-2 text-white/85 max-w-md mx-auto transition-all duration-[800ms] ease-out",
                       "hidden lg:block",
                       isActive ? "opacity-100 translate-y-0" : "opacity-0 -translate-y-1",
                     ].join(" ")}
@@ -84,7 +84,7 @@ export default function BusinessSolutionsShowcase() {
                   </p>
                   <span
                     className={[
-                      "inline-block mt-3 rounded-[12px] border border-white/60 text-white/95 px-3 py-1 text-sm transition-opacity duration-500",
+                      "inline-block mt-3 rounded-[12px] border border-white/60 text-white/95 px-3 py-1 text-sm transition-opacity duration-[800ms]",
                       isActive ? "opacity-100" : "opacity-0",
                     ].join(" ")}
                   >

@@ -52,7 +52,7 @@ export default function Hero() {
           className="h-full flex items-end justify-center pb-[12vh] md:pb-[14vh] lg:pb-[16vh]"
         >
           <div className="mx-auto w-full max-w-5xl px-4 sm:px-6 lg:px-8 text-center text-white">
-            <div className="text-xs tracking-[0.25em] uppercase text-white/80">Finance Solutions</div>
+            {/* Removed top eyebrow text per request */}
             <h1 className="mt-3 text-4xl sm:text-5xl md:text-6xl font-semibold tracking-tight">Protect Your Family. Grow Your Wealth. Plan Your Legacy.</h1>
             <p className="mt-4 text-lg text-white/85">Modern insurance and financial strategies tailored to you—life insurance with living benefits, Medicare guidance, retirement planning, and more.</p>
             <div className="mt-8 flex items-center justify-center gap-3">
