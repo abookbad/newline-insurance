@@ -1,6 +1,7 @@
 "use client";
 
 import React from "react";
+import { createPortal } from "react-dom";
 import { motion, useReducedMotion } from "framer-motion";
 import { ChevronDown } from "lucide-react";
 import { cn } from "@/components/ui/lib";
@@ -18,7 +19,11 @@ export default function DropdownMenu({ label, items }: DropdownMenuProps) {
   const prefersReduced = useReducedMotion();
   const closeTimer = React.useRef<number | null>(null);
   const [menuTop, setMenuTop] = React.useState<number>(60);
+  const [menuLeft, setMenuLeft] = React.useState<number>(0);
   const [isDesktop, setIsDesktop] = React.useState<boolean>(false);
+  const [mounted, setMounted] = React.useState(false);
+
+  React.useEffect(() => { setMounted(true); }, []);
 
   React.useEffect(() => {
     function onKeydown(e: KeyboardEvent) {
@@ -35,19 +40,23 @@ export default function DropdownMenu({ label, items }: DropdownMenuProps) {
 
   // Close dropdown on resize; update position on scroll
   React.useEffect(() => {
-    const updateTop = () => {
+    const updatePosition = () => {
       if (!open) return;
       const btn = buttonRef.current;
       if (!btn) return;
       const rect = btn.getBoundingClientRect();
-      // For fixed-positioned dropdown, top should be viewport-relative (no scrollY)
       setMenuTop(rect.bottom + 6);
+      // Align left edge with trigger, clamped to viewport
+      const viewportWidth = window.innerWidth;
+      const menuWidth = Math.min(viewportWidth * 0.92, 320);
+      const desiredLeft = Math.max(8, Math.min(rect.left, viewportWidth - menuWidth - 8));
+      setMenuLeft(desiredLeft);
     };
     const close = () => setOpen(false);
-    window.addEventListener("scroll", updateTop, { passive: true });
+    window.addEventListener("scroll", updatePosition, { passive: true });
     window.addEventListener("resize", close);
     return () => {
-      window.removeEventListener("scroll", updateTop);
+      window.removeEventListener("scroll", updatePosition);
       window.removeEventListener("resize", close);
     };
   }, []);
@@ -67,6 +76,10 @@ export default function DropdownMenu({ label, items }: DropdownMenuProps) {
     if (!btn) return;
     const rect = btn.getBoundingClientRect();
     setMenuTop(Math.max(0, rect.bottom + 2));
+    const viewportWidth = window.innerWidth;
+    const menuWidth = Math.min(viewportWidth * 0.92, 320);
+    const desiredLeft = Math.max(8, Math.min(rect.left, viewportWidth - menuWidth - 8));
+    setMenuLeft(desiredLeft);
   }, [open]);
 
   React.useEffect(() => {
@@ -155,7 +168,7 @@ export default function DropdownMenu({ label, items }: DropdownMenuProps) {
           style?: React.CSSProperties;
         };
         const MDiv = motion.div as unknown as React.ComponentType<SafeMotionDivProps>;
-        return (
+        const menu = (
           <MDiv
             ref={menuRef as unknown as React.Ref<HTMLDivElement>}
             role="menu"
@@ -163,42 +176,46 @@ export default function DropdownMenu({ label, items }: DropdownMenuProps) {
             initial={prefersReduced ? false : { opacity: 0, y: -6, scale: 0.98 }}
             animate={prefersReduced ? { opacity: 1 } : { opacity: 1, y: 0, scale: 1 }}
             transition={{ duration: 0.24, ease: [0.22, 1, 0.36, 1] }}
-            style={!isDesktop ? { top: menuTop } : undefined}
-            className="fixed left-1/2 -translate-x-1/2 md:absolute md:left-0 md:translate-x-0 md:top-full md:mt-2 w-[min(92vw,20rem)] rounded-2xl border glass-border bg-white shadow-lg p-2 z-50"
+            style={{ top: menuTop, left: menuLeft, position: "fixed" as const }}
+            className="w-[min(92vw,20rem)] rounded-2xl border glass-border bg-white shadow-lg p-2 z-[9999]"
+            onMouseEnter={() => { clearCloseTimer(); setOpen(true); }}
+            onMouseLeave={scheduleClose}
           >
-          <ul className="grid gap-1" role="none">
-            {items.map((item, idx) => {
-              type SafeMotionLiProps = {
-                className?: string;
-                children?: React.ReactNode;
-                initial?: unknown;
-                animate?: unknown;
-                transition?: unknown;
-                role?: string;
-              };
-              const MLi = motion.li as unknown as React.ComponentType<SafeMotionLiProps>;
-              return (
-                <MLi
-                  key={item.href}
-                  initial={prefersReduced ? false : { opacity: 0, x: 10 }}
-                  animate={prefersReduced ? { opacity: 1 } : { opacity: 1, x: 0 }}
-                  transition={{ duration: 0.22, delay: prefersReduced ? 0 : 0.04 * idx, ease: [0.22, 1, 0.36, 1] }}
-                  role="none"
-                >
-                  <a
-                    role="menuitem"
-                    href={item.href}
-                    className="block w-full text-left px-3 py-2 rounded-xl text-sm text-[var(--brand)]/90 hover:bg-black/5 hover:scale-[1.01] transition-transform focus-visible:ring-2 ring-[--brand] ring-offset-2"
-                    onClick={() => setOpen(false)}
+            <ul className="grid gap-1" role="none">
+              {items.map((item, idx) => {
+                type SafeMotionLiProps = {
+                  className?: string;
+                  children?: React.ReactNode;
+                  initial?: unknown;
+                  animate?: unknown;
+                  transition?: unknown;
+                  role?: string;
+                };
+                const MLi = motion.li as unknown as React.ComponentType<SafeMotionLiProps>;
+                return (
+                  <MLi
+                    key={item.href}
+                    initial={prefersReduced ? false : { opacity: 0, x: 10 }}
+                    animate={prefersReduced ? { opacity: 1 } : { opacity: 1, x: 0 }}
+                    transition={{ duration: 0.22, delay: prefersReduced ? 0 : 0.04 * idx, ease: [0.22, 1, 0.36, 1] }}
+                    role="none"
                   >
-                    {item.title}
-                  </a>
-                </MLi>
-              );
-            })}
-          </ul>
+                    <a
+                      role="menuitem"
+                      href={item.href}
+                      className="block w-full text-left px-3 py-2 rounded-xl text-sm text-[var(--brand)]/90 hover:bg-black/5 hover:scale-[1.01] transition-transform focus-visible:ring-2 ring-[--brand] ring-offset-2"
+                      onClick={() => setOpen(false)}
+                    >
+                      {item.title}
+                    </a>
+                  </MLi>
+                );
+              })}
+            </ul>
           </MDiv>
         );
+
+        return mounted ? createPortal(menu, document.body) : menu;
       })() : null}
     </div>
   );
