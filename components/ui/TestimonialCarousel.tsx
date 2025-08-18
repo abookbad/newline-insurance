@@ -117,13 +117,8 @@ export default function TestimonialCarousel({
       {/* Offscreen announcement for SRs when slide changes */}
       <span className="sr-only" aria-live="polite">{announce}</span>
 
-      {/* Controls - exactly one set rendered depending on viewport */}
-      {isMobile ? (
-        <div className="mb-3 flex items-center justify-center gap-3">
-          <ArrowButton direction="prev" onClick={prev} />
-          <ArrowButton direction="next" onClick={next} />
-        </div>
-      ) : (
+      {/* Controls - desktop arrows stay outside; mobile controls rendered below track */}
+      {!isMobile && (
         <>
           <ArrowButton direction="prev" onClick={prev} className="md:inline-flex md:absolute md:-left-10 md:top-1/2 md:-translate-y-1/2" />
           <ArrowButton direction="next" onClick={next} className="md:inline-flex md:absolute md:-right-10 md:top-1/2 md:-translate-y-1/2" />
@@ -145,6 +140,14 @@ export default function TestimonialCarousel({
       >
         <CarouselCard variant="center" item={items[activeIndex]} />
       </MDiv>
+
+      {/* Mobile controls below the testimonial text */}
+      {isMobile && (
+        <div className="mt-3 flex items-center justify-center gap-3">
+          <ArrowButton direction="prev" onClick={prev} />
+          <ArrowButton direction="next" onClick={next} />
+        </div>
+      )}
 
       {/* Dots (desktop only) */}
       {!isMobile && (

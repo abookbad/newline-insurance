@@ -62,7 +62,7 @@ export default function ServicesScrollStack() {
     mq.addEventListener?.("change", update);
     return () => mq.removeEventListener?.("change", update);
   }, []);
-  const STACK_GAP_PX = 120; // vertical offset between stacked cards
+  const STACK_GAP_PX = isMobile ? 48 : 80; // increased vertical offset between stacked cards
   // On mobile, give extra clearance to ensure the last card clears before next section
   const CARD_SAFETY_PX = isMobile ? 1400 : 700;
   const wrapperStyle: React.CSSProperties = {

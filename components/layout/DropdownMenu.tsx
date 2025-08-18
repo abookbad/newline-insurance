@@ -2,6 +2,7 @@
 
 import React from "react";
 import { motion, useReducedMotion } from "framer-motion";
+import { ChevronDown } from "lucide-react";
 import { cn } from "@/components/ui/lib";
 
 export interface DropdownMenuProps {
@@ -115,7 +116,10 @@ export default function DropdownMenu({ label, items }: DropdownMenuProps) {
           "transition-transform hover:-translate-y-0.5"
         )}
       >
-        <span className="relative z-10">{label}</span>
+        <span className="relative z-10 inline-flex items-center gap-1.5">
+          <span>{label}</span>
+          <ChevronDown className="h-3.5 w-3.5 opacity-70" aria-hidden />
+        </span>
         {(() => {
           type SafeMotionSpanProps = {
             className?: string;
@@ -160,7 +164,7 @@ export default function DropdownMenu({ label, items }: DropdownMenuProps) {
             animate={prefersReduced ? { opacity: 1 } : { opacity: 1, y: 0, scale: 1 }}
             transition={{ duration: 0.24, ease: [0.22, 1, 0.36, 1] }}
             style={!isDesktop ? { top: menuTop } : undefined}
-            className="fixed left-1/2 -translate-x-1/2 md:absolute md:left-0 md:translate-x-0 md:top-full md:mt-2 w-[min(92vw,20rem)] rounded-2xl border glass-border bg-white/85 supports-[backdrop-filter]:bg-white/60 backdrop-blur-md shadow-lg p-2 z-50"
+            className="fixed left-1/2 -translate-x-1/2 md:absolute md:left-0 md:translate-x-0 md:top-full md:mt-2 w-[min(92vw,20rem)] rounded-2xl border glass-border bg-white shadow-lg p-2 z-50"
           >
           <ul className="grid gap-1" role="none">
             {items.map((item, idx) => {

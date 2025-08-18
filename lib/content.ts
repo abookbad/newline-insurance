@@ -293,7 +293,6 @@ export interface NavLinkItem {
 }
 
 export const navLinks: NavLinkItem[] = [
-  { title: "Home", href: "/" },
   {
     title: "Insurance Solutions",
     children: [
@@ -305,15 +304,28 @@ export const navLinks: NavLinkItem[] = [
     ],
   },
   {
-    title: "Planning Services",
+    title: "Business Solutions",
     children: [
-      { title: "Retirement Planning", href: "/services/retirement-planning" },
-      { title: "Estate & Legacy Planning", href: "/services/estate-legacy-planning" },
-      { title: "Tax Strategy & Optimization", href: "/services/tax-strategy" },
+      { title: "Business planning", href: "/contact?topic=business-planning" },
+      { title: "Group Benefits", href: "/contact?topic=group-benefits" },
+      { title: "Retirement solutions", href: "/services/retirement-planning" },
+      { title: "Strategic Tax Planning", href: "/services/tax-strategy" },
     ],
   },
+  {
+    title: "Planning Services",
+    children: [
+      { title: "Insurance planning", href: "/services/insurance-planning" },
+      { title: "Retirement planning", href: "/services/retirement-planning" },
+      { title: "Estate & Legacy Planning", href: "/services/estate-legacy-planning" },
+      { title: "Strategic Tax Planning", href: "/services/tax-strategy" },
+      { title: "Business planning", href: "/contact?topic=business-planning" },
+      { title: "Investment Planning", href: "/services/investment-planning" },
+      { title: "Real Estate Planning", href: "/services/real-estate-planning" },
+    ],
+  },
+  { title: "Agency Platform", href: "/agencies" },
   { title: "About Us", href: "/about" },
-  { title: "FAQ", href: "/faq" },
   { title: "Contact", href: "/contact" },
 ];
 
@@ -551,6 +563,93 @@ export const servicePages: ServicePageContent[] = [
       { q: "How are taxes handled?", a: "We design with tax awareness and coordinate with qualified professionals." },
       { q: "Can I name minors as beneficiaries?", a: "We’ll discuss options like trusts or custodial arrangements to protect minors." },
       { q: "How often should we update documents?", a: "After major changes and every few years." },
+    ],
+  },
+  {
+    id: "insurance-planning",
+    route: "/services/insurance-planning",
+    seoTitle: "Insurance Planning | Newline Financial",
+    hero: {
+      title: "Insurance Planning",
+      tagline: "Protect income, assets, and goals with coverage tailored to your life.",
+      image: { src: "/services/insurance-planning.jpeg", alt: "Family reviewing insurance plan at a kitchen table" },
+    },
+    overview: [
+      "We match policy designs to your budget and goals today—with room to adjust tomorrow.",
+      "From term and whole life to indexed options and long-term care, we help you compare in plain English.",
+    ],
+    benefits: [
+      { icon: "Shield", title: "Right‑sized protection", text: "Coverage aligned to income, debt, and family needs." },
+      { icon: "PiggyBank", title: "Cash‑value choices", text: "Explore permanent options that can build accessible value." },
+      { icon: "HeartPulse", title: "Living benefits", text: "Access benefits for qualifying illness on many modern policies." },
+    ],
+    steps: [
+      { title: "1) Quick consult", text: "Clarify goals, budget, and timeline." },
+      { title: "2) Compare options", text: "We shop carriers and outline trade‑offs." },
+      { title: "3) Apply & place", text: "Paperwork handled with updates throughout." },
+      { title: "4) Review annually", text: "Adjust as life changes so protection stays current." },
+    ],
+    faqs: [
+      { q: "How much coverage do I need?", a: "A common guideline is 10–15× income, refined for debts, savings, and goals." },
+      { q: "Term vs. permanent?", a: "Term maximizes coverage per dollar; permanent provides lifetime coverage and cash value." },
+    ],
+  },
+  {
+    id: "investment-planning",
+    route: "/services/investment-planning",
+    seoTitle: "Investment Planning | Newline Financial",
+    hero: {
+      title: "Investment Planning",
+      tagline: "Align portfolios to your goals, time horizon, and risk comfort.",
+      image: { src: "/services/retirement-investment.jpeg", alt: "Couple reviewing investments at a desk" },
+    },
+    overview: [
+      "We design risk‑aware allocations, coordinate accounts, and focus on what you can control.",
+      "Clarity around diversification, costs, and taxes helps keep your plan durable through cycles.",
+    ],
+    benefits: [
+      { icon: "PieChart", title: "Goal‑based allocations", text: "Portfolios mapped to timelines for spending and growth." },
+      { icon: "Calculator", title: "Tax awareness", text: "Asset location and rebalancing designed to reduce drag." },
+      { icon: "Shield", title: "Risk management", text: "Guardrails to help limit drawdowns and behavior mistakes." },
+    ],
+    steps: [
+      { title: "1) Goals & inventory", text: "Clarify accounts, timelines, and priorities." },
+      { title: "2) Build & allocate", text: "Construct diversified portfolios with clear roles." },
+      { title: "3) Implement", text: "Transition holdings thoughtfully to minimize costs and taxes." },
+      { title: "4) Monitor", text: "Rebalance and review annually or after life changes." },
+    ],
+    faqs: [
+      { q: "Can you manage all my accounts?", a: "We can advise across accounts and coordinate with your custodian and tax professional." },
+      { q: "Active or passive?", a: "We use evidence‑based building blocks and risk controls suited to your plan and preferences." },
+    ],
+  },
+  {
+    id: "real-estate-planning",
+    route: "/services/real-estate-planning",
+    seoTitle: "Real Estate Planning | Newline Financial",
+    hero: {
+      title: "Real Estate Planning",
+      tagline: "Integrate property decisions with your cash flow, taxes, and legacy.",
+      image: { src: "/services/estate-legacy.jpeg", alt: "Clients reviewing documents with advisor" },
+    },
+    overview: [
+      "We evaluate buy/sell/hold choices, debt structure, and how properties fit the broader plan.",
+      "Coordinate titling, beneficiaries, and estate considerations with qualified professionals.",
+    ],
+    benefits: [
+      { icon: "Calculator", title: "Cash‑flow clarity", text: "Understand income, expenses, reserves, and risk." },
+      { icon: "ScrollText", title: "Titling & legacy", text: "Coordinate with attorneys on ownership and beneficiary goals." },
+      { icon: "Shield", title: "Risk controls", text: "Insurance, liquidity, and structure aligned to your plan." },
+    ],
+    steps: [
+      { title: "1) Inventory", text: "Review properties, mortgages, cash flows, and goals." },
+      { title: "2) Scenarios", text: "Model hold vs. sell vs. buy with taxes and cash flow in mind." },
+      { title: "3) Implement", text: "Coordinate financing, titling, and coverage." },
+      { title: "4) Review", text: "Update as markets and goals change." },
+    ],
+    faqs: [
+      { q: "Do you sell real estate?", a: "We don’t broker property; we coordinate planning with your real‑estate and tax pros." },
+      { q: "Primary vs. rentals?", a: "We evaluate both, focusing on net cash flow, risk, and long‑term fit." },
     ],
   },
   {
