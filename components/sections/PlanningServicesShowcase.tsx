@@ -11,17 +11,17 @@ type Item = {
 };
 
 const TOP_ROW: Item[] = [
-  { title: "Insurance planning", href: "/services/insurance-planning", image: { src: "/services/insurance-planning.jpg", alt: "Insurance planning" } },
-  { title: "Retirement planning", href: "/services/retirement-planning", image: { src: "/services/retirement-investment.jpg", alt: "Retirement planning" } },
-  { title: "College planning", href: "/services/retirement-planning#college-planning", image: { src: "/services/college-planning.jpg", alt: "College planning" } },
-  { title: "Estate & Legacy Planning", href: "/services/estate-legacy-planning", image: { src: "/services/estate-legacy.jpg", alt: "Estate & legacy planning" } },
+  { title: "Insurance planning", href: "/solutions/planning/insurance-planning", image: { src: "/solutions/planning/insurance.jpeg", alt: "Insurance planning" } },
+  { title: "Retirement planning", href: "/solutions/planning/retirement-planning", image: { src: "/solutions/planning/retirement.jpeg", alt: "Retirement planning" } },
+  { title: "College planning", href: "/solutions/planning/college-planning", image: { src: "/solutions/planning/college.jpeg", alt: "College planning" } },
+  { title: "Estate & Legacy Planning", href: "/solutions/planning/estate-legacy-planning", image: { src: "/solutions/planning/estate-and-legacy.jpeg", alt: "Estate & legacy planning" } },
 ];
 
 const BOTTOM_ROW: Item[] = [
-  { title: "Strategic Tax Planning", href: "/services/tax-strategy", image: { src: "/services/tax-strategy.jpg", alt: "Tax strategy" } },
-  { title: "Business planning", href: "/contact?topic=business-planning", image: { src: "/services/business-owner.jpg", alt: "Business planning" } },
-  { title: "Investment Planning", href: "/services/investment-planning", image: { src: "/services/retirement-investment.jpg", alt: "Investment planning" } },
-  { title: "Real Estate Planning", href: "/services/real-estate-planning", image: { src: "/services/estate-legacy.jpg", alt: "Real estate planning" } },
+  { title: "Strategic Tax Planning", href: "/solutions/planning/tax-strategy", image: { src: "/solutions/planning/strategic-tax.jpeg", alt: "Tax strategy" } },
+  { title: "Business planning", href: "/solutions/planning/business-planning", image: { src: "/solutions/planning/business.jpeg", alt: "Business planning" } },
+  { title: "Investment Planning", href: "/solutions/planning/investment-planning", image: { src: "/solutions/planning/investment.jpeg", alt: "Investment planning" } },
+  { title: "Real Estate Planning", href: "/solutions/planning/real-estate-planning", image: { src: "/solutions/planning/real-estate.jpeg", alt: "Real estate planning" } },
 ];
 
 function Row({ items }: { items: Item[] }) {

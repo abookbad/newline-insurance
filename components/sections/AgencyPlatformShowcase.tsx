@@ -11,7 +11,7 @@ export default function AgencyPlatformShowcase() {
         {/* Agent Partners card - dark CTA style */}
         <a href="/solutions/agency/agent-partners" className="group relative overflow-hidden rounded-2xl border border-black/10 bg-[#102444] text-white shadow-md hover:shadow-lg transition-shadow">
           <div className="absolute inset-0 opacity-25">
-            <Image src="/services/insurance-planning.jpeg" alt="Agent partners" fill className="object-cover" />
+            <Image src="/solutions/planning/insurance.jpeg" alt="Agent partners" fill className="object-cover" />
             <div className="absolute inset-0 bg-gradient-to-tr from-black/50 via-black/30 to-transparent" />
           </div>
           <div className="relative p-6 md:p-8">
@@ -30,7 +30,7 @@ export default function AgencyPlatformShowcase() {
         {/* Agency Owner Partners card - light split layout */}
         <a href="/solutions/agency/agency-owner-partners" className="group relative overflow-hidden rounded-2xl border border-black/10 bg-white/80 supports-[backdrop-filter]:bg-white/60 backdrop-blur shadow-md hover:shadow-lg transition-shadow">
           <div className="absolute right-0 top-0 bottom-0 w-1/2 hidden md:block">
-            <Image src="/services/business-owner.jpeg" alt="Agency owner partners" fill className="object-cover -scale-x-100" />
+            <Image src="/solutions/business/business-planning.jpeg" alt="Agency owner partners" fill className="object-cover -scale-x-100" />
             {/* Light veil over the image for readability */}
             <div className="absolute inset-0 bg-white/55" />
             <div className="absolute inset-0 bg-gradient-to-r from-white via-white/80 to-transparent" />

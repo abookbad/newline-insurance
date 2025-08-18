@@ -18,28 +18,28 @@ const ITEMS: Item[] = [
     title: "Life insurance",
     blurb: "Term, Whole Life, and Indexed UL options—with living benefits and final expense choices.",
     href: "/products/life-insurance",
-    image: { src: "/services/insurance-planning.jpeg", alt: "Family reviewing life insurance" },
+    image: { src: "/solutions/insurance/life-insurance.jpeg", alt: "Family reviewing life insurance" },
   },
   {
     id: "medicare",
     title: "Medicare",
     blurb: "Part A & B, Med Supp, Medi‑Medi, and Part C Advantage plans explained in plain English.",
     href: "/products/medicare",
-    image: { src: "/services/retirement-investment.jpeg", alt: "Advisor reviewing Medicare" },
+    image: { src: "/solutions/insurance/medicare.jpeg", alt: "Advisor reviewing Medicare" },
   },
   {
     id: "ltc",
     title: "Long‑Term Care",
     blurb: "Compare stand‑alone LTC to life policies with LTC riders and when each can fit.",
     href: "/products/long-term-care",
-    image: { src: "/services/college-planning.jpeg", alt: "Senior receiving care" },
+    image: { src: "/solutions/insurance/long-term-care.jpeg", alt: "Senior receiving care" },
   },
   {
     id: "disability",
     title: "Disability Insurance",
     blurb: "Occupational versus non‑occupational disability—how income protection works.",
     href: "/products/disability-insurance",
-    image: { src: "/services/business-owner.jpeg", alt: "Professional at work" },
+    image: { src: "/solutions/insurance/disability-insurance.jpeg", alt: "Professional at work" },
   },
 ];
 
