@@ -1,5 +1,6 @@
 import React from "react";
 import Link from "next/link";
+import Estimator from "@/components/sections/Estimator";
 
 export default function Page() {
   return (
@@ -35,6 +36,9 @@ export default function Page() {
           >
             Get a life insurance quote
           </Link>
+        </div>
+        <div className="mt-8">
+          <Estimator />
         </div>
       </div>
     </div>

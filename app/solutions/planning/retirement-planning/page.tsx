@@ -1,4 +1,5 @@
 import React from "react";
+import RetirementGapChecker from "@/components/sections/RetirementGapChecker";
 
 export default function Page() {
   return (
@@ -7,6 +8,9 @@ export default function Page() {
       <p className="mt-3 text-black/70">
         Turn savings into sustainable income and invest with risk awareness.
       </p>
+      <div className="mt-8">
+        <RetirementGapChecker />
+      </div>
     </div>
   );
 }

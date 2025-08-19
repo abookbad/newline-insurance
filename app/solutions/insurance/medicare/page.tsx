@@ -1,5 +1,6 @@
 import React from "react";
 import Link from "next/link";
+import MedicareWindowChecker from "@/components/sections/MedicareWindowChecker";
 
 export default function Page() {
   return (
@@ -35,6 +36,9 @@ export default function Page() {
           >
             Get a Medicare guidance call
           </Link>
+        </div>
+        <div className="mt-8">
+          <MedicareWindowChecker />
         </div>
       </div>
     </div>

@@ -1,5 +1,6 @@
 import React from "react";
 import Link from "next/link";
+import EstimatorPanel from "@/components/sections/EstimatorPanel";
 
 export default function Page() {
   return (
@@ -26,6 +27,9 @@ export default function Page() {
           >
             Start a planning consult
           </Link>
+        </div>
+        <div className="mt-8">
+          <EstimatorPanel />
         </div>
       </div>
     </div>

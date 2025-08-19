@@ -1,4 +1,5 @@
 import React from "react";
+import EstateChecklistWizard from "@/components/sections/EstateChecklistWizard";
 
 export default function Page() {
   return (
@@ -7,6 +8,9 @@ export default function Page() {
       <p className="mt-3 text-black/70">
         Transfer wealth efficiently and support what matters most.
       </p>
+      <div className="mt-8">
+        <EstateChecklistWizard />
+      </div>
     </div>
   );
 }

@@ -1,5 +1,6 @@
 import React from "react";
 import Link from "next/link";
+import LTCProjection from "@/components/sections/LTCProjection";
 
 export default function Page() {
   return (
@@ -26,6 +27,9 @@ export default function Page() {
           >
             Discuss LTC options
           </Link>
+        </div>
+        <div className="mt-8">
+          <LTCProjection />
         </div>
       </div>
     </div>

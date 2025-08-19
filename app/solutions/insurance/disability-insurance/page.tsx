@@ -1,5 +1,6 @@
 import React from "react";
 import Link from "next/link";
+import DisabilityBenefitEstimator from "@/components/sections/DisabilityBenefitEstimator";
 
 export default function Page() {
   return (
@@ -26,6 +27,9 @@ export default function Page() {
           >
             Check my options
           </Link>
+        </div>
+        <div className="mt-8">
+          <DisabilityBenefitEstimator />
         </div>
       </div>
     </div>

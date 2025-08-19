@@ -1,4 +1,6 @@
 import Link from "next/link";
+import GroupBenefitsCostEstimator from "@/components/sections/GroupBenefitsCostEstimator";
+import KeyPersonCoverageEstimator from "@/components/sections/KeyPersonCoverageEstimator";
 
 export default function BusinessSolutions() {
   const items = [
@@ -20,6 +22,24 @@ export default function BusinessSolutions() {
           </li>
         ))}
       </ul>
+
+      <div className="mt-10 grid gap-8">
+        <section>
+          <h2 className="text-xl font-semibold">Group benefits cost preview</h2>
+          <p className="text-sm text-black/70">Adjust headcount and employer share to see an estimated monthly budget.</p>
+          <div className="mt-4">
+            <GroupBenefitsCostEstimator />
+          </div>
+        </section>
+
+        <section>
+          <h2 className="text-xl font-semibold">Key person coverage estimator</h2>
+          <p className="text-sm text-black/70">Rough in a benefit to cover operating loss and hiring/onboarding costs.</p>
+          <div className="mt-4">
+            <KeyPersonCoverageEstimator />
+          </div>
+        </section>
+      </div>
     </div>
   );
 }

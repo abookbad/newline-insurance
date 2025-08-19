@@ -1,4 +1,5 @@
 import React from "react";
+import RealEstateCashflowHelper from "@/components/sections/RealEstateCashflowHelper";
 
 export default function Page() {
   return (
@@ -7,6 +8,9 @@ export default function Page() {
       <p className="mt-3 text-black/70">
         Integrate property choices with cash flow, taxes, and legacy goals.
       </p>
+      <div className="mt-8">
+        <RealEstateCashflowHelper />
+      </div>
     </div>
   );
 }

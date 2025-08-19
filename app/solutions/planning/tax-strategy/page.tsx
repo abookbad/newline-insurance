@@ -1,4 +1,5 @@
 import React from "react";
+import TaxWithdrawalHelper from "@/components/sections/TaxWithdrawalHelper";
 
 export default function Page() {
   return (
@@ -7,6 +8,9 @@ export default function Page() {
       <p className="mt-3 text-black/70">
         Keep more of what you earn with coordinated, compliant strategies.
       </p>
+      <div className="mt-8">
+        <TaxWithdrawalHelper />
+      </div>
     </div>
   );
 }
