@@ -1,6 +1,4 @@
 import Hero from "@/components/sections/Hero";
-import ServicesTabs from "@/components/sections/ServicesTabs";
-import AgencyPlatformPromo from "@/components/sections/AgencyPlatformPromo";
 import AgencyPlatformShowcase from "@/components/sections/AgencyPlatformShowcase";
 import AboutUsBrief from "@/components/sections/AboutUsBrief";
 import FinalCTA from "@/components/sections/FinalCTA";

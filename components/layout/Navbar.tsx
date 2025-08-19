@@ -102,10 +102,10 @@ export default function Navbar() {
             initial={prefersReduced ? false : { opacity: 0, y: -10 }}
             animate={prefersReduced ? { opacity: 1 } : { opacity: 1, y: 0 }}
             transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
-            className="fixed inset-x-0 top-0 z-40 bg-transparent"
+            className="relative z-40 bg-white border-b border-black/10"
           >
             <div className="py-2 relative">
-              <div ref={barRef} className="mx-auto w-[min(94vw,1200px)] grid items-center grid-cols-[200px,1fr,auto] gap-x-4 rounded-2xl glass-border bg-white/70 supports-[backdrop-filter]:bg-white/60 backdrop-blur-md shadow-sm px-3 py-2">
+              <div ref={barRef} className="mx-auto w-[min(94vw,1200px)] grid items-center grid-cols-[200px,1fr,auto] gap-x-4 px-3 py-2">
                 {/* Left: Logo */}
                 <Link href="/" className="col-start-1 row-span-2 self-stretch w-full h-full flex items-center justify-center gap-2 rounded-2xl px-2 hover:bg-black/5 focus-visible:ring-2 ring-[--brand] ring-offset-2">
                   <Image src="/mainPage/hero/heroLogoExtended.png" alt="Newline Financial & Insurance Solutions" width={180} height={30} className="h-7 w-auto sm:h-8" />
@@ -133,7 +133,7 @@ export default function Navbar() {
                   <a
                     href="tel:+19517049422"
                     aria-label="Call us"
-                    className="inline-flex h-10 w-10 items-center justify-center rounded-xl border glass-border bg-white/70 supports-[backdrop-filter]:bg-white/60 hover:bg-white shadow-sm text-[var(--brand)]"
+                    className="inline-flex h-10 w-10 items-center justify-center rounded-xl border bg-white hover:bg-black/5 shadow-sm text-[var(--brand)]"
                   >
                     <Phone className="h-5 w-5" aria-hidden />
                   </a>

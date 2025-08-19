@@ -305,7 +305,7 @@ export const navLinks: NavLinkItem[] = [
     children: [
       { title: "Life Insurance", href: "/solutions/insurance/life-insurance" },
       { title: "Medicare", href: "/solutions/insurance/medicare" },
-      { title: "Final Expense", href: "/products/final-expense" },
+      { title: "Final Expense", href: "/solutions/insurance/final-expense" },
       { title: "Disability Insurance", href: "/solutions/insurance/disability-insurance" },
       { title: "Long-Term Care", href: "/solutions/insurance/long-term-care" },
     ],
