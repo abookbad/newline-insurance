@@ -15,6 +15,16 @@ export default function Page() {
         <p className="mt-3 text-black/70">
           Turn savings into sustainable income and invest with risk awareness.
         </p>
+        <div className="mt-8 grid gap-6 text-black/80">
+          <section>
+            <h2 className="text-xl font-semibold">Focus areas</h2>
+            <ul className="mt-3 list-disc pl-5">
+              <li>Income mapping with annuities, pensions, and Social Security</li>
+              <li>Tax‑aware withdrawals and Roth conversion windows</li>
+              <li>Risk controls to limit drawdowns</li>
+            </ul>
+          </section>
+        </div>
         <div className="mt-8">
           <RetirementGapChecker />
         </div>

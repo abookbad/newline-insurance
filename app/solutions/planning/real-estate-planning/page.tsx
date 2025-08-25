@@ -15,6 +15,16 @@ export default function Page() {
         <p className="mt-3 text-black/70">
           Integrate property choices with cash flow, taxes, and legacy goals.
         </p>
+        <div className="mt-8 grid gap-6 text-black/80">
+          <section>
+            <h2 className="text-xl font-semibold">Decisions we support</h2>
+            <ul className="mt-3 list-disc pl-5">
+              <li>Buy, sell, or hold analysis with tax and cash‑flow awareness</li>
+              <li>Debt structure and reserves planning</li>
+              <li>Titling, beneficiaries, and estate coordination</li>
+            </ul>
+          </section>
+        </div>
         <div className="mt-8">
           <RealEstateCashflowHelper />
         </div>

@@ -36,6 +36,24 @@ export default function Page() {
           </ol>
         </section>
 
+        <section>
+          <h2 className="text-xl font-semibold">What to expect</h2>
+          <ol className="mt-3 list-decimal pl-5 text-black/80">
+            <li>Timeline check and creditable coverage review</li>
+            <li>Plan comparisons focused on total annual cost and flexibility</li>
+            <li>Enrollment and annual review support</li>
+          </ol>
+        </section>
+
+        <section>
+          <h2 className="text-xl font-semibold">FAQs</h2>
+          <ul className="mt-3 list-disc pl-5 text-black/80">
+            <li>Can I keep my doctors? We check networks and prescriptions up front.</li>
+            <li>Advantage or Medigap? We outline trade‑offs in plain English.</li>
+            <li>Late enrollment penalties? We help you avoid them.</li>
+          </ul>
+        </section>
+
         <div className="mt-4">
           <Link
             href="/apply"

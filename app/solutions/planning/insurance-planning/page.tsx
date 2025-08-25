@@ -27,6 +27,15 @@ export default function Page() {
           </ul>
         </section>
 
+        <section>
+          <h2 className="text-xl font-semibold">Our approach</h2>
+          <ol className="mt-3 list-decimal pl-5 text-black/80">
+            <li>Clarify goals, risks, and budget</li>
+            <li>Compare options in plain English with carrier shopping</li>
+            <li>Implement and review annually as life changes</li>
+          </ol>
+        </section>
+
         <div className="mt-4">
           <Link
             href="/apply"

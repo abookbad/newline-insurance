@@ -15,6 +15,16 @@ export default function Page() {
         <p className="mt-3 text-black/70">
           Transfer wealth efficiently and support what matters most.
         </p>
+        <div className="mt-8 grid gap-6 text-black/80">
+          <section>
+            <h2 className="text-xl font-semibold">Priorities</h2>
+            <ul className="mt-3 list-disc pl-5">
+              <li>Coordinate beneficiaries, titling, and trusts</li>
+              <li>Protect against confusion, creditors, and taxes</li>
+              <li>Clarity for family roles and instructions</li>
+            </ul>
+          </section>
+        </div>
         <div className="mt-8">
           <EstateChecklistWizard />
         </div>

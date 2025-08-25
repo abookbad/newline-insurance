@@ -27,6 +27,15 @@ export default function Page() {
           </ul>
         </section>
 
+        <section>
+          <h2 className="text-xl font-semibold">Steps</h2>
+          <ol className="mt-3 list-decimal pl-5 text-black/80">
+            <li>Discuss likely care preferences and budget</li>
+            <li>Compare traditional vs. hybrid policies and features</li>
+            <li>Implement and review as needs evolve</li>
+          </ol>
+        </section>
+
         <div className="mt-4">
           <Link
             href="/apply"

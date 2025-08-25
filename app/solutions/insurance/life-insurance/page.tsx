@@ -36,6 +36,24 @@ export default function Page() {
           </ol>
         </section>
 
+        <section>
+          <h2 className="text-xl font-semibold">Is it a fit?</h2>
+          <ul className="mt-3 list-disc pl-5 text-black/80">
+            <li>Income protection while raising a family or paying a mortgage</li>
+            <li>Business or loan coverage needs for partners and lenders</li>
+            <li>Legacy or cash value goals alongside protection</li>
+          </ul>
+        </section>
+
+        <section>
+          <h2 className="text-xl font-semibold">FAQs</h2>
+          <ul className="mt-3 list-disc pl-5 text-black/80">
+            <li>Medical exams? Some policies are simplified; we’ll point to the best fit.</li>
+            <li>Can I adjust later? Beneficiaries and riders can be updated over time.</li>
+            <li>How much do I need? We start with income and debts, then tailor.</li>
+          </ul>
+        </section>
+
         <div className="mt-4">
           <Link
             href="/apply"

@@ -18,6 +18,16 @@ export default function Page() {
         <div className="mt-6 text-black/80">
           We design risk‑aware allocations, coordinate accounts, and focus on what you can control.
         </div>
+        <div className="mt-8 grid gap-6 text-black/80">
+          <section>
+            <h2 className="text-xl font-semibold">How we invest</h2>
+            <ul className="mt-3 list-disc pl-5">
+              <li>Evidence‑based building blocks and diversification</li>
+              <li>Risk budgeting and rebalancing policy</li>
+              <li>Tax‑aware location and withdrawal sequencing</li>
+            </ul>
+          </section>
+        </div>
         <div className="mt-8">
           <RetirementGapChecker />
         </div>

@@ -15,6 +15,16 @@ export default function Page() {
         <p className="mt-3 text-black/70">
           Keep more of what you earn with coordinated, compliant strategies.
         </p>
+        <div className="mt-8 grid gap-6 text-black/80">
+          <section>
+            <h2 className="text-xl font-semibold">Focus areas</h2>
+            <ul className="mt-3 list-disc pl-5">
+              <li>Bracket management and timing income/capital gains</li>
+              <li>Account location (taxable vs. tax‑deferred vs. Roth)</li>
+              <li>Roth conversions within IRMAA and bracket constraints</li>
+            </ul>
+          </section>
+        </div>
         <div className="mt-8">
           <TaxWithdrawalHelper />
         </div>

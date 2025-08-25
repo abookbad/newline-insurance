@@ -27,6 +27,15 @@ export default function Page() {
           </ul>
         </section>
 
+        <section>
+          <h2 className="text-xl font-semibold">Who benefits most</h2>
+          <ul className="mt-3 list-disc pl-5 text-black/80">
+            <li>Professionals whose income supports family necessities</li>
+            <li>Self‑employed or high‑specialty roles with limited group DI</li>
+            <li>Anyone wanting portable coverage independent of employer</li>
+          </ul>
+        </section>
+
         <div className="mt-4">
           <Link
             href="/apply"

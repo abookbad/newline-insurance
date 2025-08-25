@@ -15,6 +15,24 @@ export default function Page() {
         <p className="mt-3 text-black/70">
           Smaller, simplified policies to help loved ones handle funeral and last expenses.
         </p>
+        <div className="mt-8 grid gap-6 text-black/80">
+          <section>
+            <h2 className="text-xl font-semibold">Who it’s for</h2>
+            <ul className="mt-3 list-disc pl-5">
+              <li>Those wanting a modest, predictable policy for final costs</li>
+              <li>Applicants preferring simplified underwriting</li>
+              <li>Families aiming to protect savings for other goals</li>
+            </ul>
+          </section>
+          <section>
+            <h2 className="text-xl font-semibold">Next steps</h2>
+            <ol className="mt-3 list-decimal pl-5">
+              <li>Quick call to size coverage and budget</li>
+              <li>Choose a carrier with suitable approval criteria</li>
+              <li>Simple application and fast decision</li>
+            </ol>
+          </section>
+        </div>
         <div className="mt-8">
           <FinalExpenseCostBuilder />
         </div>
