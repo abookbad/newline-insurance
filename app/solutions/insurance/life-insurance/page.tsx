@@ -1,14 +1,21 @@
 import React from "react";
 import Link from "next/link";
 import Estimator from "@/components/sections/Estimator";
+import SolutionHero from "@/components/sections/SolutionHero";
 
 export default function Page() {
   return (
-    <div className="mx-auto max-w-5xl px-4 sm:px-6 py-16">
-      <h1 className="text-3xl font-semibold tracking-tight">Life Insurance</h1>
-      <p className="mt-3 text-black/70">
-        Protect income and family goals with term or permanent options.
-      </p>
+    <>
+      <SolutionHero
+        title="Life Insurance"
+        subtitle="Protect income and family goals with term or permanent options."
+        image={{ src: "/solutions/insurance/life-insurance.jpeg", alt: "Life insurance" }}
+      />
+      <div className="mx-auto max-w-5xl px-4 sm:px-6 py-16">
+        <h1 className="text-3xl font-semibold tracking-tight">Life Insurance</h1>
+        <p className="mt-3 text-black/70">
+          Protect income and family goals with term or permanent options.
+        </p>
 
       <div className="mt-8 grid gap-6">
         <section>
@@ -41,7 +48,8 @@ export default function Page() {
           <Estimator />
         </div>
       </div>
-    </div>
+      </div>
+    </>
   );
 }
 

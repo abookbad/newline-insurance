@@ -4,7 +4,7 @@ import KeyPersonCoverageEstimator from "@/components/sections/KeyPersonCoverageE
 
 export default function BusinessSolutions() {
   const items = [
-    { title: "Business planning", href: "/solutions/planning/business-planning", blurb: "Entity, continuity, and key person strategies." },
+    { title: "Business planning", href: "/solutions/business/business-planning", blurb: "Entity, continuity, and key person strategies." },
     { title: "Group Benefits", href: "/solutions/business/group-benefits", blurb: "Benefits packages to attract and retain talent." },
     { title: "Retirement solutions", href: "/solutions/business/retirement", blurb: "Employer plan design with clear costs and fiduciary awareness." },
     { title: "Strategic Tax Planning", href: "/solutions/business/strategic-tax", blurb: "Coordinate structure and benefits with tax pros." },

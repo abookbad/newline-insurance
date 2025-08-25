@@ -15,26 +15,26 @@ const ITEMS: Item[] = [
   {
     title: "Business planning",
     blurb: "Continuity, key person, and buy‑sell strategies to protect owners and operations.",
-    href: "/contact?topic=business-planning",
-    image: { src: "/business-solutions/business-planning.jpeg", alt: "Business partners planning together" },
+    href: "/solutions/business/business-planning",
+    image: { src: "/solutions/business/business-planning.jpeg", alt: "Business partners planning together" },
   },
   {
     title: "Group Benefits",
     blurb: "Attract and retain talent with benefits designed for your budget.",
-    href: "/contact?topic=group-benefits",
-    image: { src: "/business-solutions/group-benefits.jpeg", alt: "Team discussing benefits options" },
+    href: "/solutions/business/group-benefits",
+    image: { src: "/solutions/business/group-benefits.jpeg", alt: "Team discussing benefits options" },
   },
   {
     title: "Retirement solutions",
     blurb: "Plan design, costs, and fiduciary awareness for employer retirement plans.",
-    href: "/services/retirement-planning",
-    image: { src: "/business-solutions/retirement-solutions.jpeg", alt: "Retirement plan documents on a desk" },
+    href: "/solutions/business/retirement",
+    image: { src: "/solutions/business/retirement-solutions.jpeg", alt: "Retirement plan documents on a desk" },
   },
   {
     title: "Strategic Tax Planning",
     blurb: "Coordinate with tax pros to align structure, benefits, and distributions.",
-    href: "/services/tax-strategy",
-    image: { src: "/business-solutions/strategic-tax-planning.jpeg", alt: "Analyzing tax strategy" },
+    href: "/solutions/business/strategic-tax",
+    image: { src: "/solutions/business/strategic-tax.jpeg", alt: "Analyzing tax strategy" },
   },
 ];
 

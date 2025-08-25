@@ -1,14 +1,21 @@
 import React from "react";
 import Link from "next/link";
 import MedicareWindowChecker from "@/components/sections/MedicareWindowChecker";
+import SolutionHero from "@/components/sections/SolutionHero";
 
 export default function Page() {
   return (
-    <div className="mx-auto max-w-5xl px-4 sm:px-6 py-16">
-      <h1 className="text-3xl font-semibold tracking-tight">Medicare</h1>
-      <p className="mt-3 text-black/70">
-        Compare plan types and enroll with confidence—no jargon, just clear guidance.
-      </p>
+    <>
+      <SolutionHero
+        title="Medicare"
+        subtitle="Compare plan types and enroll with confidence—no jargon, just clear guidance."
+        image={{ src: "/solutions/insurance/medicare.jpeg", alt: "Medicare" }}
+      />
+      <div className="mx-auto max-w-5xl px-4 sm:px-6 py-16">
+        <h1 className="text-3xl font-semibold tracking-tight">Medicare</h1>
+        <p className="mt-3 text-black/70">
+          Compare plan types and enroll with confidence—no jargon, just clear guidance.
+        </p>
 
       <div className="mt-8 grid gap-6">
         <section>
@@ -41,7 +48,8 @@ export default function Page() {
           <MedicareWindowChecker />
         </div>
       </div>
-    </div>
+      </div>
+    </>
   );
 }
 

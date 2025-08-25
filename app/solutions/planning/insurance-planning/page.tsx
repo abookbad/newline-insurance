@@ -1,14 +1,21 @@
 import React from "react";
 import Link from "next/link";
 import EstimatorPanel from "@/components/sections/EstimatorPanel";
+import SolutionHero from "@/components/sections/SolutionHero";
 
 export default function Page() {
   return (
-    <div className="mx-auto max-w-5xl px-4 sm:px-6 py-16">
-      <h1 className="text-3xl font-semibold tracking-tight">Insurance planning</h1>
-      <p className="mt-3 text-black/70">
-        Protect income, assets, and goals with coverage tailored to your life.
-      </p>
+    <>
+      <SolutionHero
+        title="Insurance planning"
+        subtitle="Protect income, assets, and goals with coverage tailored to your life."
+        image={{ src: "/solutions/planning/insurance.jpeg", alt: "Insurance planning" }}
+      />
+      <div className="mx-auto max-w-5xl px-4 sm:px-6 py-16">
+        <h1 className="text-3xl font-semibold tracking-tight">Insurance planning</h1>
+        <p className="mt-3 text-black/70">
+          Protect income, assets, and goals with coverage tailored to your life.
+        </p>
 
       <div className="mt-8 grid gap-6">
         <section>
@@ -32,7 +39,8 @@ export default function Page() {
           <EstimatorPanel />
         </div>
       </div>
-    </div>
+      </div>
+    </>
   );
 }
 

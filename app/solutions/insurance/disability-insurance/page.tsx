@@ -1,14 +1,21 @@
 import React from "react";
 import Link from "next/link";
 import DisabilityBenefitEstimator from "@/components/sections/DisabilityBenefitEstimator";
+import SolutionHero from "@/components/sections/SolutionHero";
 
 export default function Page() {
   return (
-    <div className="mx-auto max-w-5xl px-4 sm:px-6 py-16">
-      <h1 className="text-3xl font-semibold tracking-tight">Disability Insurance</h1>
-      <p className="mt-3 text-black/70">
-        Protect your paycheck if illness or injury keeps you from working.
-      </p>
+    <>
+      <SolutionHero
+        title="Disability Insurance"
+        subtitle="Protect your paycheck if illness or injury keeps you from working."
+        image={{ src: "/solutions/insurance/disability-insurance.jpeg", alt: "Disability insurance" }}
+      />
+      <div className="mx-auto max-w-5xl px-4 sm:px-6 py-16">
+        <h1 className="text-3xl font-semibold tracking-tight">Disability Insurance</h1>
+        <p className="mt-3 text-black/70">
+          Protect your paycheck if illness or injury keeps you from working.
+        </p>
 
       <div className="mt-8 grid gap-6">
         <section>
@@ -32,7 +39,8 @@ export default function Page() {
           <DisabilityBenefitEstimator />
         </div>
       </div>
-    </div>
+      </div>
+    </>
   );
 }
 

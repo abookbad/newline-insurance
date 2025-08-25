@@ -1,14 +1,21 @@
 import React from "react";
 import Link from "next/link";
 import LTCProjection from "@/components/sections/LTCProjection";
+import SolutionHero from "@/components/sections/SolutionHero";
 
 export default function Page() {
   return (
-    <div className="mx-auto max-w-5xl px-4 sm:px-6 py-16">
-      <h1 className="text-3xl font-semibold tracking-tight">Long‑Term Care</h1>
-      <p className="mt-3 text-black/70">
-        Plan for care costs and protect family from financial strain.
-      </p>
+    <>
+      <SolutionHero
+        title="Long‑Term Care"
+        subtitle="Plan for care costs and protect family from financial strain."
+        image={{ src: "/solutions/insurance/long-term-care.jpeg", alt: "Long-term care" }}
+      />
+      <div className="mx-auto max-w-5xl px-4 sm:px-6 py-16">
+        <h1 className="text-3xl font-semibold tracking-tight">Long‑Term Care</h1>
+        <p className="mt-3 text-black/70">
+          Plan for care costs and protect family from financial strain.
+        </p>
 
       <div className="mt-8 grid gap-6">
         <section>
@@ -32,7 +39,8 @@ export default function Page() {
           <LTCProjection />
         </div>
       </div>
-    </div>
+      </div>
+    </>
   );
 }
 
